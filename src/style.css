@@ -423,3 +423,18 @@ h2 span { color: var(--orange-text); }
     transition: none !important;
   }
 }
+
+/* Ensure regular-size CTA and donation text meets AA contrast as well. */
+.desktop-nav .nav-donate,
+.button-orange { color: #102012; }
+.donate { color: #102012; }
+.donate h2 span { color: #102012; }
+.donate .arrow-link { color: #102012; }
+.record-card:hover .record-source { color: var(--cream); }
+/* Caption contrast is always protected by a solid shadow scrim. */
+.documentary-photo figcaption { text-shadow: 0 1px 3px rgba(0,0,0,.8); }
+/* Do not clip a keyboard outline on the semantic disclosure rows. */
+.activity-list { outline-offset: 2px; }
+@media (hover: none) {
+  .activity-row:hover summary { padding-left: 0; }
+}
