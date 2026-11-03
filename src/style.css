@@ -244,3 +244,182 @@ p { line-height: 1.55; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto!important; transition: none!important; animation: none!important; }
 }
+
+
+
+/* -----------------------------------------------------------
+   Organic forms + WCAG AA contrast improvements, November 2026
+   The GRIS brand palette stays intact, but functional text uses
+   contrasting variants rather than orange on light surfaces.
+------------------------------------------------------------ */
+:root {
+  --orange-text: #9c4708;
+  --orange-on-green: #ffad70;
+  --focus-ring: #9c4708;
+  --soft-cream: #fff9ed;
+  --radius-organic: 48% 52% 46% 54% / 16% 14% 20% 19%;
+}
+html { scroll-padding-top: 30px; }
+body { overflow-x: clip; }
+.sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap;
+  border: 0;
+}
+:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 4px;
+}
+.site-header { z-index: 40; }
+.mobile-nav[hidden] { display: none !important; }
+.mobile-nav a:focus-visible, .footer a:focus-visible,
+.about a:focus-visible, .network a:focus-visible {
+  outline-color: var(--orange-on-green);
+}
+.documentary, .about, .network, .footer { --focus-ring: var(--orange-on-green); }
+.donate { --focus-ring: var(--green); }
+.menu-toggle { min-width: 46px; min-height: 46px; }
+.brand { min-height: 68px; }
+.arrow-link, .footer-link { min-height: 29px; }
+.footer-link { padding-block: 6px; }
+.activity-row summary { min-height: 80px; }
+.activity-row summary:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: -3px;
+}
+.record-card:focus-visible { outline-offset: -5px; }
+
+.hero { position: relative; overflow: hidden; isolation: isolate; }
+.hero::before {
+  content: ""; position: absolute;
+  pointer-events: none; z-index: -1;
+  width: clamp(280px, 38vw, 670px); aspect-ratio: 1;
+  border: 1px solid rgba(32,61,43,.14);
+  border-radius: 48% 52% 47% 53% / 53% 46% 54% 47%;
+  right: -19%; top: 9%;
+  transform: rotate(-24deg);
+}
+.hero::after {
+  content: ""; position: absolute;
+  width: clamp(180px, 23vw, 340px); aspect-ratio: 1.3;
+  border: 1px solid rgba(32,61,43,.10);
+  border-radius: 60% 40% 57% 43% / 42% 53% 47% 58%;
+  right: -11%; top: 29%;
+  transform: rotate(21deg);
+  pointer-events: none; z-index: -1;
+}
+.hero h1 { max-width: 1170px; line-height: 1.01; letter-spacing: -.073em; }
+.hero h1 span { color: var(--orange-text); }
+.hero-bottom { position: relative; z-index: 1; }
+.section-pad { position: relative; }
+.section-label { letter-spacing: .105em; }
+h2 span { color: var(--orange-text); }
+.activities h2 span, .records h2 span, .territory h2 span,
+.impact h2 span, .volunteer h2 span { color: var(--orange-text); }
+.about h2 span, .network h2 span { color: var(--orange-on-green); }
+.network .arrow-link, .about .light-link { color: var(--orange-on-green); }
+.donate h2 span { color: var(--green); }
+.donate .button-green { color: var(--cream); }
+.mobile-nav .mobile-donate { color: var(--orange-on-green); }
+.activity-row:hover .activity-title { color: var(--orange-text); }
+.record-number { color: var(--orange-text); }
+.record-card:hover .record-number { color: var(--orange-on-green); }
+.territory-big span { color: var(--orange-text); }
+.documentary-panel p span { color: var(--orange-on-green); }
+.documentary-photo img { object-position: center 44%; }
+.documentary-panel {
+  position: relative; isolation: isolate;
+  overflow: hidden;
+  background: #254833;
+}
+.documentary-decor {
+  position: absolute; width: 450px; aspect-ratio: 1;
+  border: 1px solid rgba(245,241,231,.27);
+  border-radius: 44% 56% 60% 40% / 48% 45% 55% 52%;
+  top: -180px; right: -220px;
+  transform: rotate(-20deg); z-index: -1; pointer-events: none;
+}
+.documentary-decor::after {
+  content: ""; position: absolute; inset: 35px;
+  border: 1px solid rgba(245,241,231,.2);
+  border-radius: 52% 48% 49% 51% / 57% 44% 56% 43%;
+}
+.documentary-photo figcaption {
+  background: linear-gradient(transparent, rgba(12,29,17,.95));
+  padding-top: 65px; font-size: 12px; font-weight: 550;
+}
+.about {
+  margin-top: -1px;
+  border-radius: 0 0 48% 52% / 0 0 clamp(20px,5vw,68px) clamp(20px,5vw,68px);
+  overflow: hidden;
+}
+.about-grid { column-gap: clamp(40px,8vw,125px); }
+.about-signature { letter-spacing: .12em; }
+.territory { padding-top: clamp(110px,13vw,175px); }
+.territory-heading h2 { max-width: 980px; }
+.territory-info {
+  position: relative; isolation: isolate; overflow: hidden;
+  background: #e6ebd6;
+  border-radius: 0 clamp(46px, 9vw, 150px) 0 0;
+}
+.territory-info > * { position: relative; }
+.territory-orbit {
+  position: absolute; right: -135px; top: -150px;
+  width: clamp(300px,32vw,560px); aspect-ratio: 1;
+  border: 1px solid rgba(32,61,43,.16);
+  border-radius: 46% 54% 52% 48% / 40% 56% 44% 60%;
+  transform: rotate(-24deg); pointer-events: none;
+}
+.territory-photo { align-self: stretch; overflow: hidden; border-radius: 0 0 0 clamp(40px,8vw,110px); }
+.territory-photo img { object-position: center; }
+.activities {
+  background: var(--pale);
+  border-radius: clamp(25px,5vw,75px) clamp(25px,5vw,75px) 0 0 /
+                 clamp(25px,5vw,75px) clamp(25px,5vw,75px) 0 0;
+}
+.activity-row summary { transition: padding-left 180ms ease; }
+.activity-row:hover summary { padding-left: 7px; }
+.activity-title small { color: #425a48; }
+.activity-row[open] .activity-title { color: var(--green); }
+.activity-row[open] summary { border-bottom: 1px solid rgba(32,61,43,.20); }
+.impact-numbers > div { min-width: 0; }
+.impact-numbers strong { overflow-wrap: anywhere; }
+.network { border-radius: clamp(28px,6vw,100px) 0 clamp(28px,6vw,100px) 0; }
+.network-brand { letter-spacing: -.04em; }
+.record-card {
+  border-radius: 0 clamp(20px,4vw,54px) 0 0;
+  background: var(--soft-cream);
+}
+.record-card:nth-child(2) { border-radius: clamp(20px,4vw,54px) 0 0 0; }
+.record-card:hover { background: var(--green); }
+.donate { border-radius: clamp(26px,5vw,74px) clamp(26px,5vw,74px) 0 0; }
+.volunteer-form input:focus-visible,
+.volunteer-form textarea:focus-visible { background: #fffaf0; }
+.volunteer-form input, .volunteer-form textarea { min-height: 52px; }
+.form-feedback { border-radius: 0 16px 16px 0; }
+.footer { border-radius: clamp(25px,5vw,72px) clamp(25px,5vw,72px) 0 0; }
+.footer-top p { line-height: 1.18; }
+@media (min-width: 900px) {
+  .hero-bottom > p { max-width: 580px; }
+  .documentary-inner { grid-template-columns: 56% 44%; }
+  .documentary-panel { padding: clamp(35px,5vw,80px); }
+  .territory-grid { gap: clamp(20px,3vw,48px); }
+  .records-grid { gap: clamp(20px,2vw,36px); }
+}
+@media (max-width: 599px) {
+  .hero::before { right: -42%; top: 15%; }
+  .hero::after { right: -32%; top: 37%; }
+  .hero h1 { font-size: clamp(48px, 11.7vw, 71px); letter-spacing: -.064em; }
+  .documentary-panel { min-height: 300px; }
+  .documentary-panel p { font-size: clamp(35px,10vw,47px); }
+  .impact-numbers strong { font-size: clamp(63px,17vw,96px); }
+  .territory-big { font-size: clamp(48px,13vw,82px); }
+  .territory-info { min-height: 350px; }
+  .footer-end { line-height: 1.6; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .activity-row summary, .arrow-link, .button, .record-card {
+    transition: none !important;
+  }
+}
