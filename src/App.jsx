@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -78,6 +78,7 @@ function External({ href, children, className = "" }) {
   return (
     <a href={href} className={className} target="_blank" rel="noopener noreferrer">
       {children}
+      <span className="sr-only"> (abre em uma nova aba)</span>
       <ArrowUpRight aria-hidden="true" size={17} />
     </a>
   );
@@ -85,18 +86,46 @@ function External({ href, children, className = "" }) {
 
 function Header() {
   const [open, setOpen] = useState(false);
+  const buttonRef = useRef(null);
+  const menuRef = useRef(null);
 
   useEffect(() => {
     document.body.classList.toggle("menu-open", open);
-    const escape = (event) => {
-      if (event.key === "Escape") setOpen(false);
+    if (open) menuRef.current?.querySelector("a")?.focus();
+
+    const onKeyDown = (event) => {
+      if (!open) return;
+      if (event.key === "Escape") {
+        setOpen(false);
+        buttonRef.current?.focus();
+      }
+      if (event.key === "Tab") {
+        const focusable = [buttonRef.current, ...menuRef.current.querySelectorAll("a[href]")].filter(Boolean);
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
     };
-    window.addEventListener("keydown", escape);
+
+    const onResize = () => {
+      if (window.matchMedia("(min-width: 900px)").matches) setOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    window.addEventListener("resize", onResize);
     return () => {
       document.body.classList.remove("menu-open");
-      window.removeEventListener("keydown", escape);
+      window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("resize", onResize);
     };
   }, [open]);
+
+  const closeMenu = () => setOpen(false);
 
   return (
     <header className="site-header">
@@ -107,6 +136,7 @@ function Header() {
           <a className="nav-donate" href="#doar">Quero doar <ArrowUpRight size={16} aria-hidden="true" /></a>
         </nav>
         <button
+          ref={buttonRef}
           className="menu-toggle"
           type="button"
           aria-label={open ? "Fechar menu" : "Abrir menu"}
@@ -114,17 +144,23 @@ function Header() {
           aria-controls="mobile-menu"
           onClick={() => setOpen(value => !value)}
         >
-          {open ? <X size={25} /> : <Menu size={25} />}
+          {open ? <X size={25} aria-hidden="true" /> : <Menu size={25} aria-hidden="true" />}
         </button>
       </div>
-      <nav id="mobile-menu" className={"mobile-nav" + (open ? " is-open" : "")} aria-label="Navegação no celular" inert={!open}>
+      <nav
+        ref={menuRef}
+        id="mobile-menu"
+        className={"mobile-nav" + (open ? " is-open" : "")}
+        aria-label="Navegação no celular"
+        hidden={!open}
+      >
         {NAV.map(([label, href], i) => (
-          <a key={href} href={href} onClick={() => setOpen(false)}>
-            <span className="mobile-index">{String(i + 1).padStart(2, "0")}</span>
+          <a key={href} href={href} onClick={closeMenu}>
+            <span className="mobile-index" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
             {label}<ArrowUpRight size={19} aria-hidden="true" />
           </a>
         ))}
-        <a className="mobile-donate" href="#doar" onClick={() => setOpen(false)}>Quero doar <Heart size={19} aria-hidden="true" /></a>
+        <a className="mobile-donate" href="#doar" onClick={closeMenu}>Quero doar <Heart size={19} aria-hidden="true" /></a>
       </nav>
     </header>
   );
@@ -163,6 +199,7 @@ function Hero() {
             <figcaption>Oficina comunitária • Foto: Divulgação / Associação GRIS, via Diario de Pernambuco</figcaption>
           </figure>
           <div className="documentary-panel">
+            <div className="documentary-decor" aria-hidden="true"></div>
             <Label light>O território é o ponto de partida</Label>
             <p>Uma casa.<br />Muitas histórias.<br /><span>Uma comunidade inteira.</span></p>
             <span className="documentary-location">08°S / RECIFE — PERNAMBUCO</span>
@@ -201,6 +238,7 @@ function Territory() {
         <div className="territory-heading"><h2>Nosso lugar<br />é a <span>Várzea.</span></h2><p>A cidade é feita por quem a ocupa. Nosso trabalho começa na Vila Arraes e se constrói com as pessoas, as memórias e os desafios que fazem parte desse território.</p></div>
         <div className="territory-grid">
           <div className="territory-info">
+            <div className="territory-orbit" aria-hidden="true"></div>
             <span className="location-mark">RECIFE / PE</span>
             <div className="territory-big">VÁRZEA<span>↗</span></div>
             <p>Não falamos de um território à distância. Estamos aqui — nas oficinas, nas conversas, nas urgências e nas pequenas transformações do cotidiano.</p>
