@@ -27,7 +27,7 @@ const SOURCES = {
 
 const IMAGES = {
   oficina: "https://www.diariodepernambuco.com.br/_midias/jpg/2026/05/13/design___2026_05_13t102819_708-889477.jpg",
-  comunidade: "https://images03.brasildefato.com.br/5cf5dad728c39e71c4dfd20bbda6c67a.jpeg",
+  comunidade: "https://www.diariodepernambuco.com.br/_midias/jpg/2026/05/13/600x400/1_whatsapp_image_2026_05_12_at_20_41_41-889458.jpeg",
 };
 
 const NAV = [
@@ -207,8 +207,8 @@ function Territory() {
             <External href={CONTACT.maps} className="arrow-link">Como chegar ao GRIS</External>
           </div>
           <figure className="territory-photo">
-            <img src={IMAGES.comunidade} alt="Equipe e voluntários do GRIS diante do espaço comunitário com doações arrecadadas" loading="lazy" />
-            <figcaption>Mobilização comunitária na Várzea • Foto: Brasil de Fato, 2023</figcaption>
+            <img src={IMAGES.comunidade} alt="Registro fotográfico de atividades da Associação GRIS na Vila Arraes" loading="lazy" />
+            <figcaption>Associação GRIS / Vila Arraes • Foto: @ignusph / Associação GRIS, via Diario de Pernambuco</figcaption>
           </figure>
         </div>
       </div>
