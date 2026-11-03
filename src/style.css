@@ -3,3 +3,29 @@
 @media(min-width:600px){.container{width:min(100% - 64px,1280px)}.field-row{grid-template-columns:1fr 1fr}.hero-visual{min-height:460px}.hero-sticker{width:155px;height:155px;font-size:14px}}
 @media(min-width:900px){.desktop-nav{display:flex}.menu-toggle{display:none}.header-inner{min-height:100px}.hero{grid-template-columns:1fr 1fr;gap:50px;padding-block:95px 110px}.hero h1{font-size:clamp(58px,5.5vw,87px)}.hero-visual{min-height:520px}.section{padding-block:120px}.about-layout{grid-template-columns:1fr 1fr;gap:75px}.recognition-grid{grid-template-columns:1fr 1fr;gap:80px}.section-heading{flex-direction:row;justify-content:space-between;align-items:end}.partners-content{grid-template-columns:1fr 1fr}.donate-inner{grid-template-columns:1.2fr .8fr;gap:90px}.volunteer-grid{grid-template-columns:.85fr 1.15fr;gap:85px}.footer-grid{grid-template-columns:1.3fr 1fr .7fr;gap:60px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+/* Fidelity pass: GRIS Framer tokens and hero composition */
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,400..800&display=swap');
+:root{font-family:"Google Sans Flex",Inter,Arial,sans-serif}
+h1,h2,h3,.brand-word,.mobile-nav a,.activity h3,.recognition-items h3,.donate-card h3,.footer-grid h3{font-family:"Google Sans Flex",Inter,Arial,sans-serif}
+.hero{width:100%;max-width:none;min-height:0;display:block;padding:54px 0 86px;overflow:hidden;background:#f5f1e7}
+.hero-intro{max-width:1060px;position:relative;z-index:2}
+.hero h1{font-family:"Google Sans Flex",Inter,Arial,sans-serif;font-size:clamp(44px,5.1vw,72px);font-weight:400;line-height:1.04;letter-spacing:-.035em;max-width:1014px;margin:0 0 24px}
+.hero-intro p{font-size:clamp(18px,2vw,24px);line-height:1.25;color:#e86e09;margin:0 0 34px;font-weight:400;max-width:700px}
+.hero-gallery{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(2,minmax(150px,1fr));gap:12px;width:min(100%,1550px);margin-inline:auto;height:clamp(370px,57vw,600px);overflow:hidden}
+.hero-image{overflow:hidden;min-width:0;min-height:0;background:#e6ebd6}
+.hero-image img{width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-image-landscape{grid-column:1;grid-row:1}
+.hero-image-portrait:nth-child(2){grid-column:2;grid-row:1 / span 2}
+.hero-image-portrait:nth-child(3){grid-column:1;grid-row:2}
+.hero-actions{justify-content:center;margin-top:0;gap:12px;padding-top:22px}
+.hero-cta{background:#e86e09;border-color:#e86e09;color:#203d2b;font-size:18px;font-weight:600;min-height:58px;padding:14px 20px;min-width:162px}
+.hero-cta:hover{background:#dc6400;border-color:#dc6400;color:#203d2b}
+.hero-cta-alt{background:transparent;border-color:#203d2b;color:#203d2b}
+.hero-cta-alt:hover{background:#203d2b;color:#f5f1e7;border-color:#203d2b}
+.section h2{font-weight:650;letter-spacing:-.045em}
+.section h2 em{font-family:inherit;font-style:normal;font-weight:400;letter-spacing:inherit}
+.hero-sticker{display:none}
+@media(min-width:700px){.hero{padding-top:66px}.hero-gallery{grid-template-columns:32% 34% 34%;grid-template-rows:1fr;gap:12px;height:clamp(450px,42vw,600px)}.hero-image-landscape{grid-column:1;grid-row:1;align-self:end;height:50%;margin-bottom:15%}.hero-image-portrait:nth-child(2){grid-column:2;grid-row:1}.hero-image-portrait:nth-child(3){grid-column:3;grid-row:1}.hero-actions{padding-top:22px}}
+@media(min-width:900px){.hero{display:block;padding:64px 0 60px}.hero h1{font-size:clamp(48px,4.2vw,66px)}.hero-intro{max-width:1014px}.hero-intro p{margin-left:8%;margin-bottom:32px}.hero-gallery{width:min(109%,1574px);max-width:none;position:relative;left:50%;transform:translateX(-50%)}}
+@media(max-width:420px){.hero h1{font-size:clamp(36px,10.4vw,44px)}.hero-gallery{gap:8px;height:370px}.hero-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.hero-cta{font-size:13px;gap:5px;padding:12px 10px;min-width:0;min-height:54px}}
