@@ -61,12 +61,13 @@ test("disclosures work by keyboard and form fields are labeled", async ({ page }
   await expect(page.getByLabel("Como gostaria de contribuir?")).toBeVisible();
 });
 
-test("records are descriptive links; ornaments do not appear in accessibility tree", async ({ page }) => {
+test("records are descriptive links and the decorative ornaments are removed", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator(".record-item")).toHaveCount(2);
   await expect(page.locator(".record-item").first()).toHaveAttribute("rel", "noopener noreferrer");
-  await expect(page.locator(".contour-mark")).toHaveCount(3);
-  await expect(page.locator(".contour-mark").first()).toHaveAttribute("aria-hidden", "true");
+  await expect(page.locator(".contour-mark")).toHaveCount(0);
+  await expect(page.locator(".hero svg.contour-mark")).toHaveCount(0);
+  await expect(page.locator(".footer-columns")).toBeVisible();
 });
 
 test("unavailable external photographs have legible fallbacks", async ({ page }) => {
@@ -81,4 +82,20 @@ test("reduced-motion preference disables nonessential transitions", async ({ pag
   await page.goto("/");
   const transition = await page.locator(".record-item").first().evaluate(element => getComputedStyle(element).transitionDuration);
   expect(transition).toBe("0s");
+});
+
+test("footer has clear navigation, contact and social sections", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.getByRole("navigation", { name: "Navegação do rodapé" })).toBeVisible();
+  await expect(page.locator(".footer-column")).toHaveCount(4);
+  await expect(page.locator(".footer-bottomline")).toContainText("Vila Arraes");
+});
+
+test("donation and primary actions never put text on orange surfaces", async ({ page }) => {
+  await page.goto("/");
+  const checks = [".donate", ".button-orange", ".nav-donate"];
+  for (const selector of checks) {
+    const color = await page.locator(selector).first().evaluate((element) => getComputedStyle(element).backgroundColor);
+    expect(color, selector + " must not have orange background").not.toBe("rgb(232, 110, 9)");
+  }
 });
