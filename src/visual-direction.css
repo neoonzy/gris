@@ -12,6 +12,9 @@
   --gris-orange-text: #9c4708;
   --gris-sand: #ece9da;
   --gris-warm: #f4dcc7;
+  --gris-gray: #ececea;
+  --gris-gray-light: #f1f1ee;
+  --gris-gray-input: #f3f3f0;
   --gris-line: rgba(32, 61, 43, .29);
   --gris-near-black: #171b18;
 }
@@ -168,7 +171,7 @@
   line-height: 1.5;
 }
 .activities {
-  background: var(--gris-sand);
+  background: var(--gris-gray-light);
   color: var(--gris-forest);
 }
 .activity-row:hover .activity-title { color: var(--gris-orange-text); }
@@ -245,11 +248,11 @@
 }
 .record-item:hover .record-copy h3 { color: var(--gris-orange-text); }
 
-/* Fortaleça essa rede: a calm invitation, not another brand-color banner.
- * The light warm surface lets the organization and call to action breathe.
+/* Fortaleça essa rede: neutral and legible, without a saturated banner.
+ * Use a subtle solid gray rather than a desaturated transparent overlay.
  */
 .donate {
-  background: var(--gris-warm) !important;
+  background: var(--gris-gray) !important;
   color: var(--gris-forest) !important;
   border-block: 1px solid var(--gris-line);
 }
@@ -296,9 +299,9 @@
 }
 
 .volunteer { background: var(--gris-white); }
-.volunteer-form input, .volunteer-form textarea { background: rgba(255,255,255,.18); }
+.volunteer-form input, .volunteer-form textarea { background: var(--gris-gray-input); }
 .volunteer-form input:focus-visible, .volunteer-form textarea:focus-visible { background: #fffdf6; }
-.form-feedback { background: var(--gris-sand); }
+.form-feedback { background: var(--gris-gray-light); }
 
 /* Footer: own editorial chapter, not a stack of miscellaneous links. */
 .footer {
