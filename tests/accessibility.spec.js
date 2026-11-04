@@ -114,3 +114,66 @@ test("donation uses a calm light surface and footer returns to green", async ({ 
   const network = await page.locator(".network").evaluate(element => getComputedStyle(element).backgroundColor);
   expect(network).toBe("rgb(32, 61, 43)");
 });
+
+
+test("spacing and link targets stay comfortable across breakpoints", async ({ page }) => {
+  for (const width of [320, 375, 600, 768, 1024, 1100, 1440]) {
+    await page.setViewportSize({ width, height: 820 });
+    await page.goto("/");
+
+    const layout = await page.evaluate(() => {
+      const section = document.querySelector(".activities");
+      const links = [...document.querySelectorAll(
+        ".arrow-link, .button, .footer-column > a, .footer-bottomline a, .desktop-nav > a, .activity-row summary"
+      )].filter(el => {
+        const css = getComputedStyle(el);
+        const box = el.getBoundingClientRect();
+        return css.display !== "none" && css.visibility !== "hidden" && box.width > 0;
+      });
+      const containers = [...document.querySelectorAll(
+        "main > section .container, footer > .container"
+      )].map(el => {
+        const box = el.getBoundingClientRect();
+        return { left: box.left, right: box.right };
+      });
+      const activityStyles = getComputedStyle(section);
+      const photo = document.querySelector(".territory-photo").getBoundingClientRect();
+      const info = document.querySelector(".territory-info").getBoundingClientRect();
+      return {
+        sectionPadding: parseFloat(activityStyles.paddingTop),
+        minTargetHeight: Math.min(...links.map(el => el.getBoundingClientRect().height)),
+        containersInsideViewport: containers.every(box => box.left >= -2 && box.right <= window.innerWidth + 2),
+        territoryStacked: photo.top > info.top + 8,
+      };
+    });
+
+    expect(layout.containersInsideViewport, "container overflow at " + width + "px").toBe(true);
+    expect(layout.minTargetHeight, "tap target too small at " + width + "px").toBeGreaterThanOrEqual(43);
+    expect(layout.sectionPadding, "section too cramped at " + width + "px").toBeGreaterThanOrEqual(66);
+    expect(layout.sectionPadding, "section too spacious at " + width + "px").toBeLessThanOrEqual(130);
+
+    if (width === 600 || width === 768) {
+      expect(layout.territoryStacked, "territory should stack at " + width + "px").toBe(true);
+    }
+    if (width === 1100 || width === 1440) {
+      expect(layout.territoryStacked, "territory should use columns at " + width + "px").toBe(false);
+    }
+  }
+});
+
+test("short screens can scroll the mobile navigation to its last link", async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 510 });
+  await page.goto("/");
+  await page.getByRole("button", { name: "Abrir menu" }).click();
+  const nav = page.getByRole("navigation", { name: "Navegação no celular" });
+  const last = nav.getByRole("link", { name: "Quero doar" });
+  await last.scrollIntoViewIfNeeded();
+  await expect(last).toBeInViewport();
+  const metrics = await nav.evaluate(el => ({
+    height: el.getBoundingClientRect().height,
+    max: window.innerHeight,
+    scrollable: el.scrollHeight > el.clientHeight,
+  }));
+  expect(metrics.height).toBeLessThanOrEqual(metrics.max);
+  expect(metrics.scrollable).toBe(true);
+});
