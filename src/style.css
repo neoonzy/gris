@@ -281,8 +281,7 @@ body { overflow-x: clip; }
 .donate { --focus-ring: var(--green); }
 .menu-toggle { min-width: 46px; min-height: 46px; }
 .brand { min-height: 68px; }
-.arrow-link, 
-
+.arrow-link { min-height: 44px; }
 .activity-row summary { min-height: 80px; }
 .activity-row summary:focus-visible {
   outline: 3px solid var(--focus-ring);
