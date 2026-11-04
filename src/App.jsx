@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import ContourMark from "./ContourMark.jsx";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -7,8 +6,6 @@ import {
   ChevronDown,
   Heart,
   Instagram,
-  Mail,
-  MapPin,
   Menu,
   X,
 } from "lucide-react";
@@ -203,7 +200,6 @@ function Hero() {
   return (
     <>
       <section id="inicio" className="hero">
-        <ContourMark variant="hero" />
         <div className="container">
           <div className="hero-topline"><Label>GRIS / Espaço Solidário — Casa Maria de Lourdes</Label><span>Várzea, Recife • Desde 2018</span></div>
           <h1>O cuidado transforma <span>territórios.</span></h1>
@@ -224,7 +220,6 @@ function Hero() {
             <figcaption>Oficina comunitária • Foto: Divulgação / Associação GRIS, via Diario de Pernambuco</figcaption>
           </figure>
           <div className="documentary-panel">
-            <ContourMark variant="documentary" />
             <Label light>O território é o ponto de partida</Label>
             <p>Uma casa.<br />Muitas histórias.<br /><span>Uma comunidade inteira.</span></p>
             <span className="documentary-location">08°S / RECIFE — PERNAMBUCO</span>
@@ -263,7 +258,6 @@ function Territory() {
         <div className="territory-heading"><h2>Nosso lugar<br />é a <span>Várzea.</span></h2><p>A cidade é feita por quem a ocupa. Nosso trabalho começa na Vila Arraes e se constrói com as pessoas, as memórias e os desafios que fazem parte desse território.</p></div>
         <div className="territory-grid">
           <div className="territory-info">
-            <ContourMark variant="territory" />
             <span className="location-mark">RECIFE / PE</span>
             <div className="territory-big">VÁRZEA<span>↗</span></div>
             <p>Não falamos de um território à distância. Estamos aqui — nas oficinas, nas conversas, nas urgências e nas pequenas transformações do cotidiano.</p>
@@ -426,17 +420,62 @@ function Volunteer() {
   );
 }
 
+
 function Footer() {
   return (
-    <footer className="footer">
+    <footer className="footer" aria-label="Informações e contato do GRIS">
       <div className="container">
-        <div className="footer-top"><Brand /><p>Do território, com o território.<br />GRIS Espaço Solidário — Casa Maria de Lourdes.</p></div>
-        <div className="footer-grid">
-          <div><span className="footer-label">Encontre o GRIS</span><External href={CONTACT.maps} className="footer-link"><MapPin size={17} aria-hidden="true" />{CONTACT.address}</External></div>
-          <div><span className="footer-label">Fale com a gente</span><a className="footer-link" href={"mailto:" + CONTACT.email}><Mail size={17} aria-hidden="true" />{CONTACT.email}</a></div>
-          <div><span className="footer-label">Nos acompanhe</span><External href={CONTACT.instagram} className="footer-link"><Instagram size={17} aria-hidden="true" />Instagram</External></div>
+        <div className="footer-intro">
+          <div className="footer-brand-block">
+            <Brand />
+            <span className="footer-kicker">GRIS Espaço Solidário<br />Casa Maria de Lourdes</span>
+          </div>
+          <div className="footer-intro-message">
+            <span className="footer-eyebrow">A construção acontece junto</span>
+            <p>Uma casa aberta.<br />Um território de <span>encontros.</span></p>
+            <a className="footer-join" href="#envolva">
+              Participe dessa história
+              <ArrowUpRight size={19} aria-hidden="true" />
+            </a>
+          </div>
         </div>
-        <div className="footer-end"><span>© {new Date().getFullYear()} GRIS Espaço Solidário</span><span>Várzea / Recife — PE</span><a href="#inicio">Voltar ao início ↑</a></div>
+
+        <div className="footer-columns">
+          <nav className="footer-column" aria-label="Navegação do rodapé">
+            <h2>Explore</h2>
+            <a href="#quem-somos">O GRIS</a>
+            <a href="#territorio">Nosso território</a>
+            <a href="#atividades">O que fazemos</a>
+            <a href="#registros">Registros</a>
+            <a href="#doar">Apoie o GRIS</a>
+          </nav>
+
+          <div className="footer-column">
+            <h2>Visite</h2>
+            <address>{CONTACT.address}</address>
+            <External href={CONTACT.maps} className="footer-action">Ver localização</External>
+          </div>
+
+          <div className="footer-column">
+            <h2>Converse</h2>
+            <a href={"mailto:" + CONTACT.email} className="footer-email">{CONTACT.email}</a>
+            <p>Para doações, parcerias e voluntariado, escreva para a equipe.</p>
+          </div>
+
+          <div className="footer-column">
+            <h2>Acompanhe</h2>
+            <External href={CONTACT.instagram} className="footer-social">
+              <Instagram size={19} aria-hidden="true" />
+              Instagram
+            </External>
+          </div>
+        </div>
+
+        <div className="footer-bottomline">
+          <span>© {new Date().getFullYear()} GRIS Espaço Solidário</span>
+          <span>Vila Arraes · Várzea · Recife / PE</span>
+          <a href="#inicio">Voltar ao início ↑</a>
+        </div>
       </div>
     </footer>
   );
