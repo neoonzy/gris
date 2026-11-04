@@ -1,201 +1,267 @@
 /*
- * GRIS — Cores de território / visual direction v2
+ * GRIS — identidade editorial, versão 3.
+ * Cor de marca: laranja #e86e09, mantida no logotipo.
+ * Os fundos são escolhidos por significado, não por alternância:
+ * papel (leitura), verde (casa/instituição), azul mineral (água/território
+ * e articulação), areia (práticas comunitárias), laranja (chamada à ação).
  *
- * O laranja permanece a cor identitária e da marca. Azul mineral,
- * amarelo-palha e tons de barro/papel fazem a narrativa respirar.
- * Somente cores e superfícies mudam: a experiência mobile-first
- * e a tipografia do projeto permanecem intactas.
- *
- * Contrastes calculados para texto normal:
- *   #203d2b / #dce9ed = 9.59:1
- *   #203d2b / #f4e6b7 = 9.55:1
- *   #203d2b / #f4dcc7 = 9.02:1
- *   #9c4708 / #f4e6b7 = 5.08:1
- *   #f5f1e7 / #284e64 = 7.88:1
- *   #ffc79e / #284e64 = 5.89:1
+ * Contrastes calculados pela fórmula WCAG 2.x (avaliação estática).
+ * #203d2b / #f5f1e7 10.56:1
+ * #284e64 / #f5f1e7 7.88:1
+ * #9c4708 / #f5f1e7 5.62:1
+ * #203d2b / #f4e6b7 9.55:1
+ * #ffc79e / #284e64 5.89:1
+ * #102012 / #e86e09 5.39:1
  */
 :root {
   --gris-orange: #e86e09;
-  --gris-orange-copy: #9c4708;
-  --gris-forest: #203d2b;
+  --gris-ink: #203d2b;
   --gris-paper: #f5f1e7;
-
-  --gris-blue: #284e64;
-  --gris-sky: #dce9ed;
-  --gris-straw: #f4e6b7;
+  --gris-mineral: #284e64;
+  --gris-sand: #f4e6b7;
+  --gris-warm: #fff7e9;
   --gris-clay: #f4dcc7;
-  --gris-ivory: #fff7e9;
-  --gris-orange-on-blue: #ffc79e;
+  --gris-orange-ink: #9c4708;
+  --gris-orange-light: #ffc79e;
 }
 
-/* The orange is the site's signature, not the entire palette. */
+/* Zero chance of tiny type resting on semi-transparent ornaments. */
 .hero {
+  isolation: isolate;
   background: var(--gris-paper);
 }
-.hero h1 span {
-  color: var(--gris-orange-copy);
+.hero::before, .hero::after {
+  display: none;
 }
-.hero::before {
-  border-color: rgba(40, 78, 100, .25);
-  background: radial-gradient(
-    circle at 62% 38%, rgba(40, 78, 100, .07), transparent 66%
-  );
+.hero > .container { position: relative; z-index: 2; }
+.hero h1 span { color: var(--gris-orange-ink); }
+.contour-mark {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  width: clamp(200px, 30vw, 490px);
+  height: auto;
+  color: var(--gris-mineral);
+  opacity: .55;
+  z-index: 1;
 }
-.hero::after {
-  border-color: rgba(232, 110, 9, .24);
+.contour-mark--hero {
+  top: clamp(28px, 5vw, 85px);
+  right: max(-170px, calc((100vw - 1500px) / 2));
+  transform: rotate(-19deg);
+  opacity: .13;
+  --mark-hole: var(--gris-paper);
 }
-
-/* Documentary / public life: one restrained blue interlude. */
+.contour-mark--documentary {
+  right: -118px;
+  top: -125px;
+  width: clamp(280px, 32vw, 490px);
+  color: #ffecdc;
+  opacity: .28;
+  transform: rotate(24deg);
+  --mark-dot: var(--gris-orange-light);
+  --mark-hole: var(--gris-mineral);
+}
+.contour-mark--territory {
+  color: var(--gris-mineral);
+  top: -150px;
+  right: -170px;
+  width: min(95%, 510px);
+  opacity: .16;
+  transform: rotate(-9deg);
+  --mark-hole: var(--gris-sand);
+}
 .documentary {
-  background: var(--gris-blue);
+  background: var(--gris-mineral);
   color: var(--gris-paper);
-  --focus-ring: var(--gris-orange-on-blue);
+  --focus-ring: var(--gris-orange-light);
 }
 .documentary-panel {
-  background: var(--gris-blue);
+  background: var(--gris-mineral);
 }
-.documentary-panel p span {
-  color: var(--gris-orange-on-blue);
+.documentary-decor { display: none; }
+.documentary-panel p span { color: var(--gris-orange-light); }
+.documentary-photo {
+  display: flex;
+  flex-direction: column;
+  background: #d5ded5;
 }
-.documentary-decor {
-  border-color: rgba(245, 241, 231, .32);
+.documentary-photo img {
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: none;
+  object-fit: cover;
+  object-position: center;
 }
-.documentary-decor::after {
-  border-color: rgba(255, 199, 158, .25);
+.documentary-photo figcaption {
+  position: static;
+  width: 100%;
+  padding: 12px 18px;
+  min-height: 40px;
+  background: var(--gris-mineral);
+  color: var(--gris-paper);
+  text-shadow: none;
+  font-size: 12px;
+  line-height: 1.45;
+  letter-spacing: .01em;
 }
+.documentary-panel .section-label { color: var(--gris-paper); }
+.about { background: var(--gris-ink); color: var(--gris-paper); }
+.about h2 span, .about .light-link { color: #ffad70; }
+.about .contour-mark { display: none; }
 
-/* Keep the deep forest associated with the institutional voice. */
-.about {
-  background: var(--gris-forest);
-}
-
-/* Territory is airy; the location panel warms the blue with sand. */
+/* Place and water are subjects, not a decorative rainbow. */
 .territory {
-  background: var(--gris-sky);
-}
-.territory-info {
-  background: var(--gris-straw);
-}
-.territory-orbit {
-  border-color: rgba(40, 78, 100, .26);
-}
-.territory-photo {
-  background: #bdd0d7;
-}
-.territory .territory-big span,
-.territory h2 span {
-  color: var(--gris-orange-copy);
-}
-
-/* Activities: an approachable, light-yellow field journal. */
-.activities {
-  background:
-    radial-gradient(ellipse 55% 40% at 100% 0%,
-      rgba(232, 110, 9, .065), transparent 78%),
-    var(--gris-straw);
-}
-.activities h2 span {
-  color: var(--gris-orange-copy);
-}
-.activity-title small {
-  color: #3d5648;
-}
-.activity-row:hover .activity-title {
-  color: var(--gris-orange-copy);
-}
-
-/* Impact numbers stay on neutral paper, for legibility. */
-.impact {
   background: var(--gris-paper);
 }
+.territory-info {
+  background: var(--gris-sand);
+}
+.territory-orbit { display: none; }
+.territory .territory-big span, .territory h2 span {
+  color: var(--gris-orange-ink);
+}
+.territory-photo { background: #ddd5c4; }
+.territory-photo figcaption { color: var(--gris-ink); }
 
-/* Network/GERA gets its own mineral-blue chapter. */
+.activities {
+  background: #ebe9d7;
+  color: var(--gris-ink);
+}
+.activities h2 span, .activity-row:hover .activity-title {
+  color: var(--gris-orange-ink);
+}
+.activity-title small { color: #3d5648; }
+.impact { background: var(--gris-paper); }
+.impact h2 span { color: var(--gris-orange-ink); }
+
+/* GERA link in a blue chapter: a second dark neutral, not a new brand. */
 .network {
-  background: var(--gris-blue);
+  background: var(--gris-mineral);
   color: var(--gris-paper);
-  --focus-ring: var(--gris-orange-on-blue);
+  --focus-ring: var(--gris-orange-light);
 }
-.network h2 span,
-.network .arrow-link {
-  color: var(--gris-orange-on-blue);
+.network h2 span, .network .arrow-link {
+  color: var(--gris-orange-light);
 }
-.network-brand {
-  border-color: rgba(245, 241, 231, .50);
-}
-.network-copy p {
-  color: var(--gris-paper);
-}
+.network-brand { border-color: rgba(245, 241, 231, .5); }
 
-/* Records can be varied without turning into a rainbow grid. */
-.records {
-  background: var(--gris-ivory);
+/* Reports are links to read, not fake image cards.
+ * Photograph: documentary/territory. Reportage: structured editorial list.
+ */
+.records { background: var(--gris-warm); }
+.records h2 span { color: var(--gris-orange-ink); }
+.records-list {
+  display: grid;
+  grid-template-columns: minmax(0,1fr);
+  border-top: 1px solid var(--gris-ink);
 }
-.record-card {
-  background: var(--gris-clay);
+.record-item {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr);
+  column-gap: 18px;
+  row-gap: 12px;
+  padding: clamp(25px, 3vw, 45px) 0;
+  border-bottom: 1px solid rgba(32,61,43,.4);
+  background: none;
+  color: var(--gris-ink);
+  border-radius: 0;
+  text-decoration: none;
+  transition: padding-left .2s ease;
 }
-.record-card:nth-child(even) {
-  background: var(--gris-sky);
+.record-item:hover { padding-left: 10px; }
+.record-item:focus-visible {
+  outline: 3px solid var(--gris-orange-ink);
+  outline-offset: 3px;
 }
-.record-card:hover,
-.record-card:focus-visible {
-  background: var(--gris-blue);
-  color: var(--gris-paper);
+.record-meta {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  justify-content: space-between;
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 750;
+  letter-spacing: .065em;
 }
-.record-card:hover .record-number,
-.record-card:focus-visible .record-number {
-  color: var(--gris-orange-on-blue);
+.record-number {
+  grid-column: 1;
+  align-self: start;
+  padding-top: 5px;
+  font-size: 12px;
+  font-weight: 750;
+  color: var(--gris-orange-ink);
 }
-.record-card:hover .record-source,
-.record-card:focus-visible .record-source {
-  color: var(--gris-paper);
+.record-copy { grid-column: 2; min-width: 0; }
+.record-copy h3 {
+  max-width: 850px;
+  font-size: clamp(26px, 3.4vw, 48px);
+  font-weight: 470;
+  letter-spacing: -.05em;
+  line-height: 1.13;
+  margin: 0 0 12px;
+  text-wrap: pretty;
 }
-
-/* Strong CTA stays orange; quiet participation stays warm paper. */
-.donate {
-  background: var(--gris-orange);
-  color: #102012;
+.record-copy p {
+  max-width: 630px;
+  font-size: clamp(15px, 1.35vw, 18px);
+  line-height: 1.55;
+  margin: 0;
 }
-.donate .button-green:hover {
-  background: var(--gris-blue);
-  color: var(--gris-paper);
+.record-source {
+  grid-column: 2;
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 10px;
+  margin-top: 7px;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 5px;
+  font-size: 14px;
+  font-weight: 650;
+  color: var(--gris-orange-ink);
 }
-.volunteer {
-  background: var(--gris-ivory);
+.record-item:hover .record-copy h3,
+.record-item:focus-visible .record-copy h3 {
+  color: var(--gris-orange-ink);
 }
+.record-item:hover .record-source { gap: 16px; }
+.donate { background: var(--gris-orange); color: #102012; }
+.donate h2 span, .donate .arrow-link { color: #102012; }
+.donate .button-green:hover { background: var(--gris-mineral); }
+.volunteer { background: var(--gris-warm); }
+.volunteer h2 span { color: var(--gris-orange-ink); }
 .volunteer-form input:focus-visible,
-.volunteer-form textarea:focus-visible {
-  background: #fffdf6;
-}
-.form-feedback {
-  background: var(--gris-straw);
-}
-.footer {
-  background: var(--gris-forest);
-}
+.volunteer-form textarea:focus-visible { background: #fffdf8; }
+.form-feedback { background: var(--gris-sand); }
+.footer { background: var(--gris-ink); color: var(--gris-paper); }
 
-/* Match the existing focus system when surfaces change color. */
-.documentary a:focus-visible,
-.network a:focus-visible {
-  outline-color: var(--gris-orange-on-blue);
-}
-.records .record-card:focus-visible {
-  outline: 3px solid var(--gris-blue);
-  outline-offset: 5px;
-}
-
-/* Additional colors should not hide content in high contrast mode. */
+/* Background-only decoration is hidden when system overrides colors. */
 @media (forced-colors: active) {
-  .hero::before,
-  .hero::after,
-  .documentary-decor,
-  .territory-orbit {
-    display: none;
+  .contour-mark { display: none !important; }
+  .record-item:focus-visible { outline-color: Highlight; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .record-item { transition: none !important; }
+}
+@media (min-width: 800px) {
+  .record-item {
+    grid-template-columns: 58px minmax(0, 1fr) minmax(130px, 210px);
+    column-gap: clamp(16px, 3vw, 48px);
+    align-items: start;
   }
-  .record-card,
-  .activity-row,
-  .documentary,
-  .network,
-  .donate {
-    border-color: CanvasText;
-  }
+  .record-meta { grid-column: 1 / -1; margin-bottom: 6px; }
+  .record-number { grid-column: 1; }
+  .record-copy { grid-column: 2; }
+  .record-source { grid-column: 3; margin-top: 6px; }
+}
+@media (min-width: 900px) {
+  .documentary-photo img { min-height: 540px; }
+}
+@media (max-width: 599px) {
+  .contour-mark--hero { right: -120px; top: 35px; width: 270px; opacity: .09; }
+  .contour-mark--documentary { top: -85px; right: -130px; }
+  .record-item { padding-block: 28px; }
+  .record-copy h3 { font-size: clamp(26px, 7vw, 35px); }
 }
