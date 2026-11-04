@@ -6,12 +6,12 @@ O objetivo é oferecer acesso utilizável ao conteúdo do GRIS em diferentes tel
 
 - Estrutura semântica com regiões de navegação, conteúdo principal e rodapé, headings organizados, rótulos de campos e texto alternativo em imagens.
 - Menu móvel com controle de expansão, fechamento via Escape, foco de teclado, bloqueio da interação com conteúdo encoberto e comportamento consistente até o breakpoint de 1100 px.
-- Cores de texto selecionadas para contraste WCAG 2.2 AA. O laranja original fica reservado à marca e a acentos sem texto sobreposto; a seção de doação usa fundo pêssego e texto verde-escuro.
+- Cores de texto selecionadas para contraste WCAG 2.2 AA. O laranja original aparece na marca e no fundo da seção de doações. Nessa seção, somente o título grande aparece branco diretamente sobre o laranja (contraste ~3,15:1); a etiqueta e os textos menores aparecem brancos sobre um laranja profundo (#9C4708), com contraste ~6,33:1. O footer utiliza quase-preto (#171B18).
 - Foco visível, links externos identificados, controles de tamanho confortável e áreas de conteúdo expansível acionáveis por teclado.
 - Preferência por movimento reduzido, ausência de grafismos decorativos, e mensagem visível quando imagens externas falham.
 - Testes de Chromium com Playwright e axe-core em `tests/accessibility.spec.js`, executados no GitHub Actions junto ao build.
 
-O rodapé foi reorganizado para incluir navegação, endereço, e-mail e Instagram com links operáveis por teclado. A marca aparece clara no rodapé verde-escuro, preservando o original laranja no cabeçalho.
+O rodapé foi reorganizado para incluir navegação, endereço, e-mail e Instagram com links operáveis por teclado. A marca aparece clara no rodapé quase-preto, preservando o original laranja no cabeçalho.
 
 ## Questões ainda abertas
 
