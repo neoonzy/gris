@@ -384,7 +384,11 @@ h2 span { color: var(--orange-text); }
   
 }
 @media (prefers-reduced-motion: reduce) {
-  .activity-row summary, .arrow-link, .button, 
+  .activity-row summary,
+  .arrow-link,
+  .button {
+    transition: none !important;
+  }
 }
 
 /* Ensure regular-size CTA and donation text meets AA contrast as well. */
