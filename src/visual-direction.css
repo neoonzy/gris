@@ -39,7 +39,12 @@
 .impact h2 span, .records h2 span, .volunteer h2 span,
 .territory-big span { color: var(--gris-orange-text); }
 .hero-topline { border-color: var(--gris-forest); }
-.hero h1 { text-wrap: balance; }
+.hero h1 {
+  text-wrap: balance;
+  color: var(--gris-near-black);
+}
+.records h2,
+.records .record-copy h3 { color: var(--gris-near-black); }
 .button, .desktop-nav .nav-donate {
   border-radius: 0;
   font-weight: 650;
