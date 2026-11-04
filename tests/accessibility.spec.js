@@ -39,10 +39,14 @@ test("mobile menu can be opened, navigated and closed with keyboard", async ({ p
   await page.keyboard.press("Enter");
   await expect(page.getByRole("button", { name: "Fechar menu" })).toHaveAttribute("aria-expanded", "true");
   await expect(page.getByRole("navigation", { name: "Navegação no celular" })).toBeVisible();
+  await expect(page.locator("main")).toHaveAttribute("inert", "");
+  await expect(page.locator("footer")).toHaveAttribute("inert", "");
   await expect(page.getByRole("link", { name: "O GRIS" })).toBeFocused();
   await page.keyboard.press("Escape");
   await expect(page.getByRole("button", { name: "Abrir menu" })).toBeFocused();
   await expect(page.getByRole("navigation", { name: "Navegação no celular" })).toBeHidden();
+  await expect(page.locator("main")).not.toHaveAttribute("inert", "");
+  await expect(page.locator("footer")).not.toHaveAttribute("inert", "");
 });
 
 test("disclosures work by keyboard and form fields are labeled", async ({ page }) => {
@@ -63,4 +67,18 @@ test("records are descriptive links; ornaments do not appear in accessibility tr
   await expect(page.locator(".record-item").first()).toHaveAttribute("rel", "noopener noreferrer");
   await expect(page.locator(".contour-mark")).toHaveCount(3);
   await expect(page.locator(".contour-mark").first()).toHaveAttribute("aria-hidden", "true");
+});
+
+test("unavailable external photographs have legible fallbacks", async ({ page }) => {
+  await page.route("https://www.diariodepernambuco.com.br/**", route => route.abort());
+  await page.goto("/");
+  await expect(page.locator(".photo-unavailable")).toHaveCount(2);
+  await expect(page.getByText("A fotografia deste registro está temporariamente indisponível.").first()).toBeVisible();
+});
+
+test("reduced-motion preference disables nonessential transitions", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  const transition = await page.locator(".record-item").first().evaluate(element => getComputedStyle(element).transitionDuration);
+  expect(transition).toBe("0s");
 });
