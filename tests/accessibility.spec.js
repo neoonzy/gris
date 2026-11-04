@@ -97,8 +97,12 @@ test("donation uses a calm light surface and footer returns to green", async ({ 
     const style = getComputedStyle(element);
     return { background: style.backgroundColor, color: style.color };
   });
-  expect(donate.background).toBe("rgb(244, 220, 199)");
+  expect(donate.background).toBe("rgb(236, 236, 234)");
   expect(donate.color).toBe("rgb(32, 61, 43)");
+  const activitiesBackground = await page.locator(".activities").evaluate(element => getComputedStyle(element).backgroundColor);
+  expect(activitiesBackground).toBe("rgb(241, 241, 238)");
+  const inputBackground = await page.locator(".volunteer-form input").first().evaluate(element => getComputedStyle(element).backgroundColor);
+  expect(inputBackground).toBe("rgb(243, 243, 240)");
   const description = await page.locator(".donate-copy").evaluate(element => getComputedStyle(element).backgroundColor);
   expect(description).toBe("rgba(0, 0, 0, 0)");
   const button = await page.locator(".donate-copy .button-green").evaluate(element => getComputedStyle(element).backgroundColor);
