@@ -67,6 +67,23 @@ const FRENTES = [
   },
 ];
 
+function Photo({ src, alt, eager = false }) {
+  const [failed, setFailed] = useState(false);
+  if (failed) {
+    return (
+      <div className="photo-unavailable" role="img" aria-label={"Imagem indisponível: " + alt}>
+        <span>GRIS / registro documental</span>
+        <p>A fotografia deste registro está temporariamente indisponível.</p>
+      </div>
+    );
+  }
+  return (
+    <img src={src} alt={alt} loading={eager ? "eager" : "lazy"}
+      fetchPriority={eager ? "high" : "auto"} decoding="async"
+      onError={() => setFailed(true)} />
+  );
+}
+
 function Brand() {
   return (
     <a className="brand" href="#inicio" aria-label="Voltar ao início">
@@ -197,7 +214,7 @@ function Hero() {
       <section className="documentary" aria-label="Registro fotográfico do GRIS">
         <div className="documentary-inner">
           <figure className="documentary-photo">
-            <img src={IMAGES.oficina} alt="Mulheres reunidas em uma oficina comunitária de artesanato do GRIS na Várzea" fetchPriority="high" />
+            <Photo src={IMAGES.oficina} alt="Mulheres reunidas em uma oficina comunitária de artesanato do GRIS na Várzea" eager />
             <figcaption>Oficina comunitária • Foto: Divulgação / Associação GRIS, via Diario de Pernambuco</figcaption>
           </figure>
           <div className="documentary-panel">
@@ -247,7 +264,7 @@ function Territory() {
             <External href={CONTACT.maps} className="arrow-link">Como chegar ao GRIS</External>
           </div>
           <figure className="territory-photo">
-            <img src={IMAGES.comunidade} alt="Registro fotográfico de atividades da Associação GRIS na Vila Arraes" loading="lazy" />
+            <Photo src={IMAGES.comunidade} alt="Registro fotográfico de atividades da Associação GRIS na Vila Arraes" />
             <figcaption>Associação GRIS / Vila Arraes • Foto: @ignusph / Associação GRIS, via Diario de Pernambuco</figcaption>
           </figure>
         </div>
