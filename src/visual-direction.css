@@ -463,3 +463,185 @@
   .record-item:focus-visible { outline-color: Highlight; }
   .footer .brand img { filter: none; }
 }
+
+
+/* ---------------------------------------------------------
+   Rhythm & navigation audit — 2026-11-04
+   Keep a generous editorial scale without stacking unrelated
+   fixed margins on top of already padded sections.
+   Breakpoints follow actual content width, not device labels.
+---------------------------------------------------------- */
+:root {
+  --gris-space-section: clamp(68px, 7vw, 94px);
+  --gris-space-chapter: clamp(32px, 4.5vw, 62px);
+  --gris-space-content: clamp(18px, 2.6vw, 32px);
+}
+.section-pad { padding-block: var(--gris-space-section); }
+.hero {
+  padding-top: clamp(48px, 6vw, 82px);
+  padding-bottom: clamp(64px, 8vw, 105px);
+}
+.hero h1 {
+  margin-top: clamp(44px, 6vw, 86px);
+  margin-bottom: clamp(38px, 4.8vw, 72px);
+  line-height: 1.04;
+}
+.hero-bottom { gap: clamp(22px, 3.5vw, 38px); }
+.hero-bottom > p { line-height: 1.45; }
+.about-grid {
+  gap: clamp(32px, 4.5vw, 64px);
+  padding-top: clamp(30px, 3.5vw, 48px);
+  padding-bottom: clamp(56px, 6vw, 90px);
+}
+.about-copy p { margin-bottom: 21px; }
+.about-copy .light-link { margin-top: 12px; }
+.territory-heading {
+  margin-top: clamp(24px, 3vw, 36px);
+  margin-bottom: clamp(36px, 5vw, 60px);
+}
+.activities-intro { margin-bottom: var(--gris-space-chapter); }
+.activities-intro h2,
+.records-top h2,
+.donate h2,
+.volunteer h2 { margin-top: clamp(19px, 2.5vw, 33px); }
+.activity-row summary { padding-block: clamp(20px, 2.3vw, 28px); }
+.activity-detail { padding-bottom: 26px; }
+.impact-heading {
+  margin-top: clamp(24px, 3vw, 38px);
+  margin-bottom: clamp(38px, 5vw, 62px);
+}
+.impact-note { padding-top: clamp(34px, 4.5vw, 62px); }
+.records-top { margin-bottom: clamp(32px, 4vw, 52px); }
+.volunteer-grid { gap: clamp(36px, 5vw, 64px); }
+.volunteer-grid > div > p { margin-top: 26px; }
+.volunteer-form { gap: 23px; }
+.volunteer-aside { margin-top: 28px; }
+.donate-copy .button { margin-top: 12px; }
+.donate-copy .arrow-link { margin-top: 23px; }
+
+/* Hit areas are at least 44px without adding oversized blank lines. */
+.arrow-link {
+  min-height: 44px;
+  align-items: center;
+  padding-block: 8px;
+  padding-bottom: 8px;
+}
+.footer-column > a {
+  min-height: 44px;
+  align-items: center;
+  padding-block: 8px;
+}
+.footer-bottomline a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.footer-join { min-height: 44px; }
+.desktop-nav > a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+.record-item { min-height: 44px; }
+.activity-row summary { min-height: 80px; }
+
+/* Small screens: less top-heavy, no cramped bottom navigation. */
+@media (max-width: 599px) {
+  .container { width: min(100% - 36px, 1320px); }
+  .header-inner { min-height: 78px; }
+  .mobile-nav {
+    height: calc(100dvh - 78px);
+    max-height: calc(100dvh - 78px);
+    min-height: 0;
+    overscroll-behavior: contain;
+  }
+  .mobile-nav a { min-height: 68px; padding-block: 12px; }
+  .hero h1 { margin-top: 38px; margin-bottom: 38px; }
+  .hero-bottom { gap: 24px; }
+  .hero-actions { gap: 10px; }
+  .section-pad { padding-block: 70px; }
+  .about-grid { gap: 30px; padding-top: 30px; padding-bottom: 56px; }
+  .about-copy p { margin-bottom: 18px; }
+  .about-signature { row-gap: 12px; }
+  .territory-heading { margin-block: 25px 37px; }
+  .territory-grid { gap: 28px; }
+  .activities-intro { margin-bottom: 33px; }
+  .activity-row summary { padding-block: 20px; }
+  .impact-heading { margin-bottom: 38px; }
+  .impact-numbers > div { gap: 20px; }
+  .impact-note { padding-top: 34px; }
+  .records-top { margin-bottom: 32px; }
+  .volunteer-grid { gap: 38px; }
+  .footer-intro { gap: 36px; padding-bottom: 58px; }
+  .footer-columns { padding-block: 36px 58px; }
+}
+
+/* Intermediate widths need breathing room; two columns at 600px
+   are often narrower than a readable text column. */
+@media (min-width: 600px) and (max-width: 899px) {
+  .section-pad { padding-block: 82px; }
+  .territory-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 26px;
+  }
+  .territory-info { min-height: 360px; }
+  .territory-photo img {
+    height: auto;
+    max-height: none;
+    aspect-ratio: 4 / 3;
+  }
+  .impact-numbers {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .impact-numbers > div:nth-child(2) { border-right: 0; }
+  .impact-numbers > div:last-child {
+    grid-column: 1 / -1;
+    border-top: 1px solid var(--gris-line);
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+@media (min-width: 600px) and (max-width: 759px) {
+  .form-pair { grid-template-columns: 1fr; }
+}
+@media (min-width: 600px) and (max-width: 1099px) {
+  .footer-columns { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Notebook: full-screen navigation is scrollable at shorter heights,
+   and forms don't need to be crammed beside giant headings. */
+@media (min-width: 900px) and (max-width: 1099px) {
+  .mobile-nav {
+    height: calc(100dvh - 90px);
+    max-height: calc(100dvh - 90px);
+    min-height: 0;
+    overscroll-behavior: contain;
+  }
+  .donate-grid, .volunteer-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 44px;
+  }
+  .volunteer-form, .donate-copy { max-width: 720px; }
+  .impact-heading, .records-top { gap: 42px; }
+  .section-pad { padding-block: 92px; }
+}
+
+/* Desktop: preserve large-scale hierarchy without stacking
+   a 145px section gutter with another 125px internal gutter. */
+@media (min-width: 1100px) {
+  .section-pad { padding-block: clamp(100px, 7.3vw, 126px); }
+  .hero {
+    padding-top: clamp(64px, 5.6vw, 92px);
+    padding-bottom: clamp(86px, 7vw, 112px);
+  }
+  .hero h1 {
+    margin-top: clamp(62px, 5.8vw, 94px);
+    margin-bottom: clamp(50px, 4.4vw, 68px);
+  }
+  .about-grid { padding-block: 44px 86px; gap: clamp(55px, 6.5vw, 105px); }
+  .territory-heading { margin-bottom: 58px; }
+  .activities-intro { margin-bottom: 56px; }
+  .records-top { margin-bottom: 48px; }
+  .footer-intro { padding-bottom: clamp(65px, 6.7vw, 98px); }
+  .footer-columns { padding-block: 45px clamp(58px, 6vw, 82px); }
+}
