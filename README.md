@@ -1,97 +1,76 @@
 # GRIS — Espaço Solidário
 
-Website institucional em React + Vite, com abordagem **mobile-first** e linguagem editorial inspirada na Rede GERA, sem reproduzir sua identidade visual. Mantém a marca original do GRIS, Google Sans Flex e a paleta creme / verde / laranja.
+Site institucional em **React + Vite**, mobile-first, com narrativa editorial e identidade própria para o GRIS — Casa Maria de Lourdes, na Vila Arraes (Várzea, Recife). A Rede GERA foi referência de linguagem, não um template a ser copiado.
 
-## Rodar localmente
+## Como rodar
 
 ```bash
 npm install
 npm run dev
 ```
 
-Para gerar os arquivos de produção:
+Build de produção:
 
 ```bash
 npm run build
 npm run preview
 ```
 
-## Estrutura editorial
+Auditoria automatizada em Chromium (Playwright + axe-core):
 
-1. Manifesto e abertura tipográfica
-2. Fotografia documental do trabalho comunitário
-3. Quem somos — história e atuação
-4. Território — Vila Arraes / Várzea
-5. Frentes de atuação com detalhes expansíveis
-6. Caminhada e impacto com indicadores **datados**
-7. Conexão com a Rede GERA
-8. Registros e cobertura jornalística
-9. Doação e participação voluntária
+```bash
+npx playwright install chromium
+npm run test:a11y
+```
 
-O menu mobile permite fechar com Escape; o conteúdo usa landmarks HTML, links reais e navegação por teclado. Os programas usam `<details>`, sem dependência extra de JavaScript.
+O GitHub Actions executa build, testes e salva `dist/`, relatórios e rastros em um artefato. **Os testes estão configurados, mas o resultado do pipeline deve ser conferido no GitHub Actions.** Não substituem testes reais com leitores de tela.
 
-## Informações e créditos
+## Sistema visual — novembro de 2026
 
-- Dados de 59 famílias acompanhadas e mais de 1,1 mil residências apoiadas em maio de 2026: reportagem do [Diario de Pernambuco](https://www.diariodepernambuco.com.br/vida-urbana/2026/05/11714059-associacao-na-varzea-vira-ponto-de-apoio-e-recomeco-para-familias-impactadas-pelas-chuvas-no-recife.html), de 13/05/2026. São resultados históricos daquela data, **não um contador atualizado**.
-- Outro registro público: [Brasil de Fato (2023)](https://www.brasildefato.com.br/2023/06/13/com-estoques-zerados-ongs-do-recife-pedem-ajuda-para-auxiliar-vitimas-em-periodo-de-chuvas/).
-- Site parceiro: [Rede GERA](https://www.redegera.org.br/).
-- Fotos: imagens de divulgação do GRIS publicadas pelo Diario de Pernambuco, com créditos visíveis nas legendas. **Obter autorização do titular dos direitos para reutilização permanente** e hospedar cópias autorizadas localmente antes de lançar em produção.
-- Logo: `public/gris-logo.svg` reúne os assets fornecidos no Framer; é um SVG-contêiner com imagens incorporadas, não um vetor recriado.
+**Laranja `#E86E09` é a cor da marca.** As demais cores cumprem funções específicas, sem transformar cada seção num card de cor diferente:
 
-## Pendências para produção
+| Papel | Cor |
+| --- | --- |
+| Marca e ação primária | laranja `#E86E09` |
+| Institucional e textos | verde `#203D2B` |
+| Documentação, água e articulação | azul mineral `#284E64` |
+| Fundos de leitura | creme `#F5F1E7` e marfim `#FFF7E9` |
+| Oficina e práticas comunitárias | areia suave `#EBE9D7` |
+| Quadro territorial | amarelo-palha `#F4E6B7` |
+| Destaques de texto sobre claro | laranja-escuro `#9C4708` |
+| Destaques sobre azul | pêssego `#FFC79E` |
 
-- O formulário **não envia para servidor**. Ele abre o programa de e-mail para o visitante revisar e enviar a mensagem.
-- Verificar com a equipe endereço e contatos antes da publicação.
-- Confirmar se querem publicar valores de Pix / dados para doações. O site não inventa chaves nem contas.
-- Garantir direitos de uso e estabilidade das duas imagens externas.
-- Testar o build de CI, a página em celulares reais e o comportamento de todas as interações.
-- Adicionar testes automatizados, se desejado, e mensuração de acesso respeitando privacidade.
+O arquivo `src/visual-direction.css` concentra a direção visual sobre a base responsiva de `src/style.css`. A tipografia é Google Sans Flex; o arquivo `public/gris-logo.svg` contém os elementos originais do Framer incorporados em um SVG, não vetores puros.
 
-## Tecnologias
+O novo `src/ContourMark.jsx` é um **grafismo autoral de curvas de nível e ponto de encontro**, inspirado em território e coletividade. Aparece discretamente em três pontos e é `aria-hidden`. Não reutiliza ilustrações da Rede GERA.
 
-React 18, Vite 6, Lucide React e CSS puro.
+### Escolha de imagens e registros
 
+As fotografias funcionam como **documentos** em duas passagens centrais: a faixa fotográfica inicial e a seção do território. Ficam maiores, sem texto por cima, com legenda e crédito fora da imagem. Os **Registros** são reportagens externas e foram convertidos de cards coloridos gigantes para uma lista editorial clicável, com data, título, contexto e origem. Isso evita fotos redundantes e evita sugerir um acervo de imagens que ainda não existe.
 
-## Acessibilidade — revisão de novembro de 2026
+As imagens vêm de URLs do *Diario de Pernambuco* e **a disponibilidade dessas URLs não pôde ser garantida**. Há fallback acessível caso falhem. Para publicação final, obter autorização dos detentores dos direitos, guardar arquivos autorizados no projeto e verificar créditos e `alt` com o GRIS.
 
-A implementação foi revisada com foco em WCAG 2.2 AA:
+## Acessibilidade
 
-- Texto pequeno não utiliza mais o laranja original sobre o creme ou verde-claro: utiliza `--orange-text` (`#9c4708`); o laranja mais claro sobre verde escuro usa `--orange-on-green` (`#ffad70`).
-- Contraste medido: verde/creme **10,56:1**, laranja original/creme **2,79:1** (não adequado para texto), variante escura/creme **5,61:1**, variante clara/verde **6,5:1**. O verde escuro doado foi substituído por texto `#102012` sobre laranja.
-- Menu de celular: `aria-expanded`, `aria-controls`, `hidden`, foco inicial no primeiro link, ciclo de Tab, fechamento com Escape e retorno do foco ao botão. Também fecha ao mudar para viewport desktop.
-- Componentes de frentes de atuação usam `details/summary`, operáveis com teclado; links externos informam que abrem outra aba.
-- Campos do formulário têm `label`, validação HTML, foco visível e mensagem de orientação sobre o fluxo `mailto:`.
-- É respeitado `prefers-reduced-motion`; formas visuais são CSS decorativo e não entram na árvore de acessibilidade.
+Auditoria focada em critérios da **WCAG 2.2 AA**, incluindo:
 
-**Importante:** essas são verificações de código e cálculos de contraste, **não certificação WCAG**. Ainda é necessário executar análise automatizada com axe/Lighthouse e teste manual com teclado, leitores de tela (NVDA e VoiceOver) e tamanhos 320 / 375 / 768 / 1280 / 1440 px.
+- Cores de texto ajustadas para evitar laranja puro sobre claro. Contrastes estáticos: verde/creme **10,56:1**; laranja-escuro/creme **5,61:1**; pêssego/azul **5,89:1**; verde-escuro/laranja **5,39:1**.
+- Links e botões com foco visível, controles com área de toque ampliada, informação textual além da cor.
+- Menu móvel com `aria-expanded`, foco inicial, Tab, Shift+Tab, Escape e fechamento ao mudar para viewport desktop. A regra de fechamento foi alinhada ao breakpoint real de **1100 px**.
+- Seções de atuação com `details/summary` nativos; headings e landmarks semânticos; links externos identificados para leitor de tela.
+- Ornamentos SVG `aria-hidden`, sem captura de eventos ou foco.
+- Imagens com texto alternativo, `figcaption` e fallback descritivo caso indisponíveis.
+- Formulário com labels explícitos, validação nativa, instrução de privacidade e aviso de que **apenas prepara mensagem por e-mail**, sem envio pelo servidor.
+- `prefers-reduced-motion` e suporte a `forced-colors` para ornamentos.
 
-### Checklist visual e funcional
+**Verificar manualmente** em Chrome, Firefox e Safari com zoom de 200% e 400%, teclado sem mouse, VoiceOver/NVDA, 320 / 375 / 768 / 1024 / 1440 px, e travessia da página com imagens indisponíveis. A configuração de axe não certifica o site.
 
-1. No celular, abrir menu, tabular até o final, usar Shift+Tab e Escape; confirmar retorno do foco e scroll desbloqueado.
-2. Testar navegação por âncoras, inclusão da marca SVG e leitura com zoom de 200% e 400%.
-3. Expandir e recolher as frentes de atuação apenas com teclado.
-4. Preencher formulário sem e-mail, com e-mail inválido e com os campos válidos. Confirmar que o envio depende de aplicativo de e-mail.
-5. Conferir se imagens externas foram carregadas, legendas e créditos aparecem, e se há autorização de reutilização.
-6. Validar contraste em todas as interações de hover, foco e botões.
-7. Testar tema com preferência por movimento reduzido.
+## Fonte de conteúdo
 
+- Resultados de maio de 2026 (59 famílias, mais de 1.100 residências): [Diario de Pernambuco, 13/05/2026](https://www.diariodepernambuco.com.br/vida-urbana/2026/05/11714059-associacao-na-varzea-vira-ponto-de-apoio-e-recomeco-para-familias-impactadas-pelas-chuvas-no-recife.html), **dados datados, não métricas em tempo real**.
+- [Brasil de Fato, 13/06/2023](https://www.brasildefato.com.br/2023/06/13/com-estoques-zerados-ongs-do-recife-pedem-ajuda-para-auxiliar-vitimas-em-periodo-de-chuvas).
+- [Rede GERA](https://www.redegera.org.br/).
 
-## Direção cromática ampliada — novembro de 2026
+## Antes de publicar
 
-O laranja continua sendo a cor **principal e identitária**, especialmente na marca e nas chamadas de ação. A linguagem editorial ficou mais variada com cores ligadas a materiais e ao território, sem substituir a tipografia nem a composição mobile que já funcionavam.
-
-| Papel | Cor | Código |
-| --- | --- | --- |
-| Assinatura do GRIS | Laranja | `#E86E09` |
-| Textos principais | Verde-escuro | `#203D2B` |
-| Capítulos documentais e Rede GERA | Azul mineral | `#284E64` |
-| Território | Azul-claro | `#DCE9ED` |
-| Atividades | Amarelo-palha | `#F4E6B7` |
-| Registros | Barro suave | `#F4DCC7` |
-| Planos de fundo | Papel creme | `#F5F1E7` |
-| Texto de destaque em fundos claros | Laranja escuro | `#9C4708` |
-| Texto de destaque sobre azul mineral | Laranja-pêssego | `#FFC79E` |
-
-**Implementação:** `src/visual-direction.css` é importado após `src/style.css` em `src/main.jsx`. Mantém intacta a base de layout, breakpoints e controles; concentra as superfícies de cor e os estados de contraste num arquivo que pode ser reavaliado isoladamente.
-
-**Acessibilidade:** contraste de texto verde-escuro sobre azul-claro `9,59:1`, amarelo-palha `9,55:1`, barro `9,02:1`; creme sobre azul mineral `7,88:1`; pêssego sobre azul mineral `5,89:1`. A paleta não equivale a uma auditoria completa no navegador: validar ainda estados de hover, foco, zoom e leitores de tela.
+Conferir endereço, contatos e informações com a equipe do GRIS; obter licença para imagens; hospedar mídias autorizadas localmente; configurar o envio real de voluntariado, se desejado; confirmar dados de doações; revisar resultados dos testes e conduzir testes manuais de acessibilidade.
