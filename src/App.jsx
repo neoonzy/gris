@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import ContourMark from "./ContourMark.jsx";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -68,7 +69,7 @@ const FRENTES = [
 
 function Brand() {
   return (
-    <a className="brand" href="#inicio" aria-label="GRIS Espaço Solidário — início">
+    <a className="brand" href="#inicio" aria-label="Voltar ao início">
       <img src="/gris-logo.svg" width="146" height="68" alt="GRIS Espaço Solidário" />
     </a>
   );
@@ -114,7 +115,7 @@ function Header() {
     };
 
     const onResize = () => {
-      if (window.matchMedia("(min-width: 900px)").matches) setOpen(false);
+      if (window.matchMedia("(min-width: 1100px)").matches) setOpen(false);
     };
     window.addEventListener("keydown", onKeyDown);
     window.addEventListener("resize", onResize);
@@ -179,6 +180,7 @@ function Hero() {
   return (
     <>
       <section id="inicio" className="hero">
+        <ContourMark variant="hero" />
         <div className="container">
           <div className="hero-topline"><Label>GRIS / Espaço Solidário — Casa Maria de Lourdes</Label><span>Várzea, Recife • Desde 2018</span></div>
           <h1>O cuidado transforma <span>territórios.</span></h1>
@@ -199,7 +201,7 @@ function Hero() {
             <figcaption>Oficina comunitária • Foto: Divulgação / Associação GRIS, via Diario de Pernambuco</figcaption>
           </figure>
           <div className="documentary-panel">
-            <div className="documentary-decor" aria-hidden="true"></div>
+            <ContourMark variant="documentary" />
             <Label light>O território é o ponto de partida</Label>
             <p>Uma casa.<br />Muitas histórias.<br /><span>Uma comunidade inteira.</span></p>
             <span className="documentary-location">08°S / RECIFE — PERNAMBUCO</span>
@@ -238,7 +240,7 @@ function Territory() {
         <div className="territory-heading"><h2>Nosso lugar<br />é a <span>Várzea.</span></h2><p>A cidade é feita por quem a ocupa. Nosso trabalho começa na Vila Arraes e se constrói com as pessoas, as memórias e os desafios que fazem parte desse território.</p></div>
         <div className="territory-grid">
           <div className="territory-info">
-            <div className="territory-orbit" aria-hidden="true"></div>
+            <ContourMark variant="territory" />
             <span className="location-mark">RECIFE / PE</span>
             <div className="territory-big">VÁRZEA<span>↗</span></div>
             <p>Não falamos de um território à distância. Estamos aqui — nas oficinas, nas conversas, nas urgências e nas pequenas transformações do cotidiano.</p>
@@ -338,11 +340,11 @@ function Records() {
     <section id="registros" className="records section-pad">
       <div className="container">
         <div className="records-top"><div><Label>06 / Em circulação</Label><h2>Histórias que merecem <span>ser contadas.</span></h2></div><p>Acompanhe notícias e registros públicos que ajudam a contar um pouco dessa caminhada.</p></div>
-        <div className="records-grid">
+        <div className="records-list">
           {REGISTROS.map((registro, i) => (
-            <a key={registro.url} className="record-card" href={registro.url} target="_blank" rel="noopener noreferrer">
-              <div className="record-top"><span>{registro.date}</span><span>{registro.type}</span></div>
-              <div className="record-bottom"><span className="record-number">{String(i + 1).padStart(2, "0")}</span><h3>{registro.title}</h3><p>{registro.summary}</p><span className="record-source">{registro.origin}<ArrowUpRight size={19} aria-hidden="true" /></span></div>
+            <a key={registro.url} className="record-item" href={registro.url} target="_blank" rel="noopener noreferrer" aria-label={`${registro.title} — ${registro.origin} (abre em nova aba)`}>
+              <div className="record-meta"><span>{registro.date}</span><span>{registro.type}</span></div>
+              <span className="record-number" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span><div className="record-copy"><h3>{registro.title}</h3><p>{registro.summary}</p></div><span className="record-source">{registro.origin}<ArrowUpRight size={19} aria-hidden="true" /></span>
             </a>
           ))}
         </div>
