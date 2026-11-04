@@ -91,16 +91,22 @@ test("footer has clear navigation, contact and social sections", async ({ page }
   await expect(page.locator(".footer-bottomline")).toContainText("Vila Arraes");
 });
 
-test("donation uses exact brand orange with accessible white typography", async ({ page }) => {
+test("donation uses a calm light surface and footer returns to green", async ({ page }) => {
   await page.goto("/");
-  const bg = await page.locator(".donate").evaluate(element => getComputedStyle(element).backgroundColor);
-  expect(bg).toBe("rgb(232, 110, 9)");
-  const heading = await page.locator(".donate h2").evaluate(element => getComputedStyle(element).color);
-  expect(heading).toBe("rgb(255, 255, 255)");
-  const copyBackground = await page.locator(".donate-copy").evaluate(element => getComputedStyle(element).backgroundColor);
-  expect(copyBackground).toBe("rgb(156, 71, 8)");
-  const copyColor = await page.locator(".donate-copy p").first().evaluate(element => getComputedStyle(element).color);
-  expect(copyColor).toBe("rgb(255, 255, 255)");
-  const footerBackground = await page.locator(".footer").evaluate(element => getComputedStyle(element).backgroundColor);
-  expect(footerBackground).toBe("rgb(23, 27, 24)");
+  const donate = await page.locator(".donate").evaluate(element => {
+    const style = getComputedStyle(element);
+    return { background: style.backgroundColor, color: style.color };
+  });
+  expect(donate.background).toBe("rgb(244, 220, 199)");
+  expect(donate.color).toBe("rgb(32, 61, 43)");
+  const description = await page.locator(".donate-copy").evaluate(element => getComputedStyle(element).backgroundColor);
+  expect(description).toBe("rgba(0, 0, 0, 0)");
+  const button = await page.locator(".donate-copy .button-green").evaluate(element => getComputedStyle(element).backgroundColor);
+  expect(button).toBe("rgb(32, 61, 43)");
+  const footer = await page.locator(".footer").evaluate(element => getComputedStyle(element).backgroundColor);
+  expect(footer).toBe("rgb(32, 61, 43)");
+  const documentary = await page.locator(".documentary").evaluate(element => getComputedStyle(element).backgroundColor);
+  expect(documentary).toBe("rgb(23, 27, 24)");
+  const network = await page.locator(".network").evaluate(element => getComputedStyle(element).backgroundColor);
+  expect(network).toBe("rgb(32, 61, 43)");
 });
