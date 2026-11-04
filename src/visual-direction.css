@@ -29,6 +29,8 @@
 .hero, .network, .territory, .donate { background-image: none !important; }
 
 /* Logo orange, text sufficiently contrasted on neutral substrates. */
+::selection { background: #dce9ed; color: #203d2b; }
+
 .site-header { background: var(--gris-paper); }
 .hero { background: var(--gris-paper); }
 .hero h1 span, .territory h2 span, .activities h2 span,
