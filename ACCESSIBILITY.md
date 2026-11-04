@@ -6,7 +6,7 @@ O objetivo é oferecer acesso utilizável ao conteúdo do GRIS em diferentes tel
 
 - Estrutura semântica com regiões de navegação, conteúdo principal e rodapé, headings organizados, rótulos de campos e texto alternativo em imagens.
 - Menu móvel com controle de expansão, fechamento via Escape, foco de teclado, bloqueio da interação com conteúdo encoberto e comportamento consistente até o breakpoint de 1100 px.
-- Cores de texto selecionadas para contraste WCAG 2.2 AA. O laranja original permanece na marca e em pequenos acentos. A seção de doações voltou ao pêssego claro (#F4DCC7) com textos verde-escuros (#203D2B), contraste de aproximadamente 9,02:1. O footer utiliza verde-escuro, e o azul foi removido das seções visíveis. A fotografia documental usa quase-preto (#171B18) com texto claro.
+- Cores de texto selecionadas para contraste WCAG 2.2 AA. O laranja original permanece na marca e em pequenos acentos. A seção de doações utiliza cinza sutil e opaco (#ECECEA) com texto verde-escuro (#203D2B). Atividades e campos do formulário também têm fundos cinza discretos, em vez de depender de transparência. O footer utiliza verde-escuro, e o azul foi removido das seções visíveis. A fotografia documental usa quase-preto (#171B18) com texto claro.
 - Foco visível, links externos identificados, controles de tamanho confortável e áreas de conteúdo expansível acionáveis por teclado.
 - Preferência por movimento reduzido, ausência de grafismos decorativos, e mensagem visível quando imagens externas falham.
 - Testes de Chromium com Playwright e axe-core em `tests/accessibility.spec.js`, executados no GitHub Actions junto ao build.
