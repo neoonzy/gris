@@ -62,6 +62,21 @@ Auditoria focada em critérios da **WCAG 2.2 AA**, incluindo:
 - [Brasil de Fato, 13/06/2023](https://www.brasildefato.com.br/2023/06/13/com-estoques-zerados-ongs-do-recife-pedem-ajuda-para-auxiliar-vitimas-em-periodo-de-chuvas).
 - [Rede GERA](https://www.redegera.org.br/).
 
+## Espaçamento e conforto de navegação — revisão de novembro de 2026
+
+O design usa um ritmo editorial responsivo em vez de margens independentes em cada bloco. O ajuste está no fim de `src/visual-direction.css`, identificado como `Rhythm & navigation audit`.
+
+| Faixa | Respiro vertical de seções | Comportamento |
+| --- | --- | --- |
+| até 599px | 70px por lado | hero mais enxuto, menu de altura limitada, links de toque adequados |
+| 600–899px | 82px por lado | território em uma coluna; indicadores distribuídos em duas colunas e uma linha completa |
+| 900–1099px | 92px por lado | doação e formulário em uma coluna; menu navegável em janelas baixas |
+| 1100px ou mais | 100–126px por lado | composição em colunas com menores espaços internos duplicados |
+
+Critérios adotados: links e controles interativos visíveis com **pelo menos 44px de altura** quando apropriado, exceção preservada para linhas de acordeão maiores; texto em colunas de leitura; espaços menores entre título e conteúdo relacionado; saltos por âncoras e estados de foco preservados. O menu com rolagem própria evita ultrapassar telas curtas, e a composição do footer continua em quatro grupos apenas onde há largura suficiente.
+
+**Validação:** regras inspecionadas estaticamente e testes Playwright adicionados para larguras de 320, 375, 600, 768, 1024, 1100 e 1440px, além de menu em viewport de 375×510px. **A execução desses testes e a inspeção visual em navegadores reais ainda precisam ser confirmadas no GitHub Actions.**
+
 ## Antes de publicar
 
 Conferir endereço, contatos e informações com a equipe do GRIS; obter licença para imagens; hospedar mídias autorizadas localmente; configurar o envio real de voluntariado, se desejado; confirmar dados de doações; revisar resultados dos testes e conduzir testes manuais de acessibilidade.
