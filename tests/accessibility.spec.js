@@ -27,7 +27,7 @@ test("fluid layout: no horizontal page overflow", async ({ page }) => {
       scrollWidth: document.documentElement.scrollWidth,
       clientWidth: document.documentElement.clientWidth,
     }));
-    expect(scrollWidth, \`Horizontal overflow at \${width}px\`).toBeLessThanOrEqual(clientWidth + 1);
+    expect(scrollWidth, "Horizontal overflow at " + width + "px").toBeLessThanOrEqual(clientWidth + 1);
   }
 });
 
