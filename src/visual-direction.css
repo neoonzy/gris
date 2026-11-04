@@ -1,0 +1,201 @@
+/*
+ * GRIS — Cores de território / visual direction v2
+ *
+ * O laranja permanece a cor identitária e da marca. Azul mineral,
+ * amarelo-palha e tons de barro/papel fazem a narrativa respirar.
+ * Somente cores e superfícies mudam: a experiência mobile-first
+ * e a tipografia do projeto permanecem intactas.
+ *
+ * Contrastes calculados para texto normal:
+ *   #203d2b / #dce9ed = 9.59:1
+ *   #203d2b / #f4e6b7 = 9.55:1
+ *   #203d2b / #f4dcc7 = 9.02:1
+ *   #9c4708 / #f4e6b7 = 5.08:1
+ *   #f5f1e7 / #284e64 = 7.88:1
+ *   #ffc79e / #284e64 = 5.89:1
+ */
+:root {
+  --gris-orange: #e86e09;
+  --gris-orange-copy: #9c4708;
+  --gris-forest: #203d2b;
+  --gris-paper: #f5f1e7;
+
+  --gris-blue: #284e64;
+  --gris-sky: #dce9ed;
+  --gris-straw: #f4e6b7;
+  --gris-clay: #f4dcc7;
+  --gris-ivory: #fff7e9;
+  --gris-orange-on-blue: #ffc79e;
+}
+
+/* The orange is the site's signature, not the entire palette. */
+.hero {
+  background: var(--gris-paper);
+}
+.hero h1 span {
+  color: var(--gris-orange-copy);
+}
+.hero::before {
+  border-color: rgba(40, 78, 100, .25);
+  background: radial-gradient(
+    circle at 62% 38%, rgba(40, 78, 100, .07), transparent 66%
+  );
+}
+.hero::after {
+  border-color: rgba(232, 110, 9, .24);
+}
+
+/* Documentary / public life: one restrained blue interlude. */
+.documentary {
+  background: var(--gris-blue);
+  color: var(--gris-paper);
+  --focus-ring: var(--gris-orange-on-blue);
+}
+.documentary-panel {
+  background: var(--gris-blue);
+}
+.documentary-panel p span {
+  color: var(--gris-orange-on-blue);
+}
+.documentary-decor {
+  border-color: rgba(245, 241, 231, .32);
+}
+.documentary-decor::after {
+  border-color: rgba(255, 199, 158, .25);
+}
+
+/* Keep the deep forest associated with the institutional voice. */
+.about {
+  background: var(--gris-forest);
+}
+
+/* Territory is airy; the location panel warms the blue with sand. */
+.territory {
+  background: var(--gris-sky);
+}
+.territory-info {
+  background: var(--gris-straw);
+}
+.territory-orbit {
+  border-color: rgba(40, 78, 100, .26);
+}
+.territory-photo {
+  background: #bdd0d7;
+}
+.territory .territory-big span,
+.territory h2 span {
+  color: var(--gris-orange-copy);
+}
+
+/* Activities: an approachable, light-yellow field journal. */
+.activities {
+  background:
+    radial-gradient(ellipse 55% 40% at 100% 0%,
+      rgba(232, 110, 9, .065), transparent 78%),
+    var(--gris-straw);
+}
+.activities h2 span {
+  color: var(--gris-orange-copy);
+}
+.activity-title small {
+  color: #3d5648;
+}
+.activity-row:hover .activity-title {
+  color: var(--gris-orange-copy);
+}
+
+/* Impact numbers stay on neutral paper, for legibility. */
+.impact {
+  background: var(--gris-paper);
+}
+
+/* Network/GERA gets its own mineral-blue chapter. */
+.network {
+  background: var(--gris-blue);
+  color: var(--gris-paper);
+  --focus-ring: var(--gris-orange-on-blue);
+}
+.network h2 span,
+.network .arrow-link {
+  color: var(--gris-orange-on-blue);
+}
+.network-brand {
+  border-color: rgba(245, 241, 231, .50);
+}
+.network-copy p {
+  color: var(--gris-paper);
+}
+
+/* Records can be varied without turning into a rainbow grid. */
+.records {
+  background: var(--gris-ivory);
+}
+.record-card {
+  background: var(--gris-clay);
+}
+.record-card:nth-child(even) {
+  background: var(--gris-sky);
+}
+.record-card:hover,
+.record-card:focus-visible {
+  background: var(--gris-blue);
+  color: var(--gris-paper);
+}
+.record-card:hover .record-number,
+.record-card:focus-visible .record-number {
+  color: var(--gris-orange-on-blue);
+}
+.record-card:hover .record-source,
+.record-card:focus-visible .record-source {
+  color: var(--gris-paper);
+}
+
+/* Strong CTA stays orange; quiet participation stays warm paper. */
+.donate {
+  background: var(--gris-orange);
+  color: #102012;
+}
+.donate .button-green:hover {
+  background: var(--gris-blue);
+  color: var(--gris-paper);
+}
+.volunteer {
+  background: var(--gris-ivory);
+}
+.volunteer-form input:focus-visible,
+.volunteer-form textarea:focus-visible {
+  background: #fffdf6;
+}
+.form-feedback {
+  background: var(--gris-straw);
+}
+.footer {
+  background: var(--gris-forest);
+}
+
+/* Match the existing focus system when surfaces change color. */
+.documentary a:focus-visible,
+.network a:focus-visible {
+  outline-color: var(--gris-orange-on-blue);
+}
+.records .record-card:focus-visible {
+  outline: 3px solid var(--gris-blue);
+  outline-offset: 5px;
+}
+
+/* Additional colors should not hide content in high contrast mode. */
+@media (forced-colors: active) {
+  .hero::before,
+  .hero::after,
+  .documentary-decor,
+  .territory-orbit {
+    display: none;
+  }
+  .record-card,
+  .activity-row,
+  .documentary,
+  .network,
+  .donate {
+    border-color: CanvasText;
+  }
+}
