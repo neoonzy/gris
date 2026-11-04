@@ -565,6 +565,7 @@
   .about-signature { row-gap: 12px; }
   .territory-heading { margin-block: 25px 37px; }
   .territory-grid { gap: 28px; }
+  .territory-big { font-size: clamp(38px, 11vw, 64px); }
   .activities-intro { margin-bottom: 33px; }
   .activity-row summary { padding-block: 20px; }
   .impact-heading { margin-bottom: 38px; }
@@ -580,6 +581,12 @@
    are often narrower than a readable text column. */
 @media (min-width: 600px) and (max-width: 899px) {
   .section-pad { padding-block: 82px; }
+  .mobile-nav {
+    min-height: 0;
+    height: calc(100dvh - 90px);
+    max-height: calc(100dvh - 90px);
+    overscroll-behavior: contain;
+  }
   .territory-grid {
     grid-template-columns: minmax(0, 1fr);
     gap: 26px;
