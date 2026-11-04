@@ -31,9 +31,9 @@ O GitHub Actions executa build, testes e salva `dist/`, relatórios e rastros em
 
 A direção atual enfatiza tipografia Google Sans Flex, fotografia documental, áreas de leitura sem excesso de cores e divisórias discretas. Grafismos sobrepostos e cantos arredondados assimétricos foram removidos, inclusive o componente `ContourMark.jsx`.
 
-Paleta de trabalho: verde-escuro `#203D2B`, papel `#F5F1E7`, areia `#ECE9DA` e pêssego `#F4DCC7`, com quase-preto `#171B18` apenas na faixa documental e em alguns títulos. O laranja `#E86E09` é usado na marca e em detalhes; o tom `#9C4708` é reservado a textos pequenos sobre superfícies claras.
+Paleta de trabalho: verde-escuro `#203D2B`, papel `#F5F1E7`, areia `#ECE9DA` e cinzas discretos `#ECECEA` / `#F1F1EE`, com quase-preto `#171B18` apenas na faixa documental e em alguns títulos. O laranja `#E86E09` é usado na marca e em detalhes; o tom `#9C4708` é reservado a textos pequenos sobre superfícies claras.
 
-**Áreas de chamada:** botões principais têm texto creme sobre verde-escuro, sem faixa laranja e sem hover azul. A seção de doação usa fundo pêssego suave `#F4DCC7` e texto verde `#203D2B` (contraste aproximado 9,02:1), sem cartão interno ou tarja. O quase-preto `#171B18` fica em alguns títulos editoriais e na faixa documental, não no rodapé.
+**Áreas de chamada:** botões principais têm texto creme sobre verde-escuro, sem faixa laranja e sem hover azul. A seção de doação usa cinza sutil sólido `#ECECEA` e texto verde `#203D2B`, sem cartão interno ou tarja. A área de atividades utiliza cinza ainda mais leve `#F1F1EE`; os campos do formulário têm fundo opaco `#F3F3F0` no lugar de uma sobreposição transparente. O quase-preto `#171B18` fica em alguns títulos editoriais e na faixa documental, não no rodapé.
 
 **Registros:** apresentados como lista editorial, sem cantos arredondados. As fotografias documentais têm legendas fora da imagem. Imagens externas podem falhar: existe fallback descritivo.
 
