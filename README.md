@@ -74,3 +74,24 @@ A implementação foi revisada com foco em WCAG 2.2 AA:
 5. Conferir se imagens externas foram carregadas, legendas e créditos aparecem, e se há autorização de reutilização.
 6. Validar contraste em todas as interações de hover, foco e botões.
 7. Testar tema com preferência por movimento reduzido.
+
+
+## Direção cromática ampliada — novembro de 2026
+
+O laranja continua sendo a cor **principal e identitária**, especialmente na marca e nas chamadas de ação. A linguagem editorial ficou mais variada com cores ligadas a materiais e ao território, sem substituir a tipografia nem a composição mobile que já funcionavam.
+
+| Papel | Cor | Código |
+| --- | --- | --- |
+| Assinatura do GRIS | Laranja | `#E86E09` |
+| Textos principais | Verde-escuro | `#203D2B` |
+| Capítulos documentais e Rede GERA | Azul mineral | `#284E64` |
+| Território | Azul-claro | `#DCE9ED` |
+| Atividades | Amarelo-palha | `#F4E6B7` |
+| Registros | Barro suave | `#F4DCC7` |
+| Planos de fundo | Papel creme | `#F5F1E7` |
+| Texto de destaque em fundos claros | Laranja escuro | `#9C4708` |
+| Texto de destaque sobre azul mineral | Laranja-pêssego | `#FFC79E` |
+
+**Implementação:** `src/visual-direction.css` é importado após `src/style.css` em `src/main.jsx`. Mantém intacta a base de layout, breakpoints e controles; concentra as superfícies de cor e os estados de contraste num arquivo que pode ser reavaliado isoladamente.
+
+**Acessibilidade:** contraste de texto verde-escuro sobre azul-claro `9,59:1`, amarelo-palha `9,55:1`, barro `9,02:1`; creme sobre azul mineral `7,88:1`; pêssego sobre azul mineral `5,89:1`. A paleta não equivale a uma auditoria completa no navegador: validar ainda estados de hover, foco, zoom e leitores de tela.
