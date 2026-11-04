@@ -25,30 +25,21 @@ npm run test:a11y
 
 O GitHub Actions executa build, testes e salva `dist/`, relatórios e rastros em um artefato. **Os testes estão configurados, mas o resultado do pipeline deve ser conferido no GitHub Actions.** Não substituem testes reais com leitores de tela.
 
-## Sistema visual — novembro de 2026
+## Sistema visual — refinamento de novembro de 2026
 
-**Laranja `#E86E09` é a cor da marca.** As demais cores cumprem funções específicas, sem transformar cada seção num card de cor diferente:
+**A marca permanece laranja**, no cabeçalho. A página usa o laranja como acento e não coloca texto sobre fundos laranja.
 
-| Papel | Cor |
-| --- | --- |
-| Marca e ação primária | laranja `#E86E09` |
-| Institucional e textos | verde `#203D2B` |
-| Documentação, água e articulação | azul mineral `#284E64` |
-| Fundos de leitura | creme `#F5F1E7` e marfim `#FFF7E9` |
-| Oficina e práticas comunitárias | areia suave `#EBE9D7` |
-| Quadro territorial | amarelo-palha `#F4E6B7` |
-| Destaques de texto sobre claro | laranja-escuro `#9C4708` |
-| Destaques sobre azul | pêssego `#FFC79E` |
+A direção atual enfatiza tipografia Google Sans Flex, fotografia documental, áreas de leitura sem excesso de cores e divisórias discretas. Grafismos sobrepostos e cantos arredondados assimétricos foram removidos, inclusive o componente `ContourMark.jsx`.
 
-O arquivo `src/visual-direction.css` concentra a direção visual sobre a base responsiva de `src/style.css`. A tipografia é Google Sans Flex; o arquivo `public/gris-logo.svg` contém os elementos originais do Framer incorporados em um SVG, não vetores puros.
+Paleta de trabalho: verde-escuro `#203D2B`, papel `#F5F1E7`, azul mineral `#284E64`, areia `#ECE9DA` e pêssego `#F4DCC7`. O laranja `#E86E09` é usado na marca e em detalhes; o tom `#9C4708` é reservado a textos pequenos sobre superfícies claras.
 
-O novo `src/ContourMark.jsx` é um **grafismo autoral de curvas de nível e ponto de encontro**, inspirado em território e coletividade. Aparece discretamente em três pontos e é `aria-hidden`. Não reutiliza ilustrações da Rede GERA.
+**Áreas de chamada:** botões principais têm texto creme sobre verde-escuro, com uma pequena linha laranja. A seção de doação usa pêssego suave e texto verde-escuro; não existe mais texto preto sobre fundo laranja.
 
-### Escolha de imagens e registros
+**Registros:** apresentados como lista editorial, sem cantos arredondados. As fotografias documentais têm legendas fora da imagem. Imagens externas podem falhar: existe fallback descritivo.
 
-As fotografias funcionam como **documentos** em duas passagens centrais: a faixa fotográfica inicial e a seção do território. Ficam maiores, sem texto por cima, com legenda e crédito fora da imagem. Os **Registros** são reportagens externas e foram convertidos de cards coloridos gigantes para uma lista editorial clicável, com data, título, contexto e origem. Isso evita fotos redundantes e evita sugerir um acervo de imagens que ainda não existe.
+**Rodapé:** estrutura editorial própria com marca em uma versão clara sobre verde-escuro, mensagem institucional, acesso à participação, quatro áreas (Explore, Visite, Converse, Acompanhe) e faixa final com direitos, localização e retorno ao topo. A versão clara do logotipo é obtida por filtro CSS sobre o SVG original (que incorpora imagens PNG, não vetores puros).
 
-As imagens vêm de URLs do *Diario de Pernambuco* e **a disponibilidade dessas URLs não pôde ser garantida**. Há fallback acessível caso falhem. Para publicação final, obter autorização dos detentores dos direitos, guardar arquivos autorizados no projeto e verificar créditos e `alt` com o GRIS.
+A interface é organizada entre `src/style.css` (base responsiva) e `src/visual-direction.css` (ajustes de identidade e layout).
 
 ## Acessibilidade
 
