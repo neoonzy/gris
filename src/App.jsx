@@ -109,6 +109,10 @@ function Header() {
 
   useEffect(() => {
     document.body.classList.toggle("menu-open", open);
+    const main = document.getElementById("conteudo");
+    const footer = document.querySelector("footer");
+    main?.toggleAttribute("inert", open);
+    footer?.toggleAttribute("inert", open);
     if (open) menuRef.current?.querySelector("a")?.focus();
 
     const onKeyDown = (event) => {
@@ -138,6 +142,8 @@ function Header() {
     window.addEventListener("resize", onResize);
     return () => {
       document.body.classList.remove("menu-open");
+      main?.removeAttribute("inert");
+      footer?.removeAttribute("inert");
       window.removeEventListener("keydown", onKeyDown);
       window.removeEventListener("resize", onResize);
     };
