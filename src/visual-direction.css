@@ -47,17 +47,68 @@
   border-color: var(--gris-forest) !important;
   color: var(--gris-paper) !important;
 }
-.button-orange:hover, .desktop-nav .nav-donate:hover {
-  background: var(--gris-mineral) !important;
-  border-color: var(--gris-mineral) !important;
-  color: #fff !important;
+/*
+ * Hover: preserve the button's original color, use depth and arrow movement.
+ * Avoid blue hover states and avoid inset orange bars.
+ */
+.button,
+.desktop-nav .nav-donate {
+  box-shadow: none;
+  transform: none;
+  transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease;
 }
-/* Orange is a brand accent, not a text background. */
-.button-orange { box-shadow: inset 0 -4px 0 var(--gris-orange); }
-.desktop-nav .nav-donate { box-shadow: inset 0 -3px 0 var(--gris-orange); }
-.mobile-nav .mobile-donate { color: #ffad70; }
+.button-orange,
+.desktop-nav .nav-donate {
+  box-shadow: none !important;
+}
+.button-orange:hover,
+.desktop-nav .nav-donate:hover {
+  background: var(--gris-forest) !important;
+  border-color: var(--gris-forest) !important;
+  color: var(--gris-paper) !important;
+}
+.button-green:hover,
+.donate-copy .button-green:hover {
+  background: var(--gris-forest) !important;
+  border-color: var(--gris-forest) !important;
+  color: var(--gris-paper) !important;
+}
 .button-outline { background: transparent; color: var(--gris-forest); }
-.button-outline:hover { color: #fff; background: var(--gris-forest); }
+.button-outline:hover {
+  background: transparent;
+  border-color: var(--gris-forest);
+  color: var(--gris-forest);
+}
+.button svg,
+.desktop-nav .nav-donate svg {
+  transition: transform .18s ease;
+}
+@media (hover: hover) {
+  .button:hover,
+  .desktop-nav .nav-donate:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 0 rgba(32, 61, 43, .14);
+  }
+  .button:hover svg,
+  .desktop-nav .nav-donate:hover svg {
+    transform: translate(4px, -1px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .desktop-nav .nav-donate,
+  .button svg,
+  .desktop-nav .nav-donate svg {
+    transition: none !important;
+  }
+  .button:hover,
+  .desktop-nav .nav-donate:hover,
+  .button:hover svg,
+  .desktop-nav .nav-donate:hover svg {
+    transform: none !important;
+  }
+}
+.mobile-nav .mobile-donate { color: #ffad70; }
 
 /* Photographs are documents, with a stable caption outside the image. */
 .documentary {
@@ -204,9 +255,9 @@
   border-color: var(--gris-forest);
 }
 .donate-copy .button-green:hover {
-  background: var(--gris-mineral) !important;
-  color: #fff !important;
-  border-color: var(--gris-mineral);
+  background: var(--gris-forest) !important;
+  color: var(--gris-paper) !important;
+  border-color: var(--gris-forest);
 }
 .volunteer { background: var(--gris-white); }
 .volunteer-form input, .volunteer-form textarea { background: rgba(255,255,255,.18); }
