@@ -27,17 +27,17 @@ O GitHub Actions executa build, testes e salva `dist/`, relatórios e rastros em
 
 ## Sistema visual — refinamento de novembro de 2026
 
-**A marca permanece laranja**, no cabeçalho. A página usa o laranja como acento e não coloca texto sobre fundos laranja.
+**A marca permanece laranja**, no cabeçalho. A página reserva o laranja original à marca e à seção de doações.
 
 A direção atual enfatiza tipografia Google Sans Flex, fotografia documental, áreas de leitura sem excesso de cores e divisórias discretas. Grafismos sobrepostos e cantos arredondados assimétricos foram removidos, inclusive o componente `ContourMark.jsx`.
 
 Paleta de trabalho: verde-escuro `#203D2B`, papel `#F5F1E7`, azul mineral `#284E64`, areia `#ECE9DA` e pêssego `#F4DCC7`. O laranja `#E86E09` é usado na marca e em detalhes; o tom `#9C4708` é reservado a textos pequenos sobre superfícies claras.
 
-**Áreas de chamada:** botões principais têm texto creme sobre verde-escuro, com uma pequena linha laranja. A seção de doação usa pêssego suave e texto verde-escuro; não existe mais texto preto sobre fundo laranja.
+**Áreas de chamada:** botões principais têm texto creme sobre verde-escuro, sem faixa laranja e sem troca para azul no hover. A seção de doação usa o laranja original `#E86E09`, com título grande em branco (contraste 3,15:1). Para assegurar a leitura dos parágrafos e da etiqueta em tamanho pequeno, eles recebem um fundo laranja profundo `#9C4708` (branco sobre esse fundo: 6,33:1). O footer e alguns títulos editoriais usam quase-preto `#171B18`.
 
 **Registros:** apresentados como lista editorial, sem cantos arredondados. As fotografias documentais têm legendas fora da imagem. Imagens externas podem falhar: existe fallback descritivo.
 
-**Rodapé:** estrutura editorial própria com marca em uma versão clara sobre verde-escuro, mensagem institucional, acesso à participação, quatro áreas (Explore, Visite, Converse, Acompanhe) e faixa final com direitos, localização e retorno ao topo. A versão clara do logotipo é obtida por filtro CSS sobre o SVG original (que incorpora imagens PNG, não vetores puros).
+**Rodapé:** estrutura editorial própria com marca em uma versão clara sobre quase-preto, mensagem institucional, acesso à participação, quatro áreas (Explore, Visite, Converse, Acompanhe) e faixa final com direitos, localização e retorno ao topo. A versão clara do logotipo é obtida por filtro CSS sobre o SVG original (que incorpora imagens PNG, não vetores puros).
 
 A interface é organizada entre `src/style.css` (base responsiva) e `src/visual-direction.css` (ajustes de identidade e layout).
 
