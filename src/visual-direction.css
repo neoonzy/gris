@@ -8,7 +8,7 @@
  * Contrastes calculados pela fórmula WCAG 2.x (avaliação estática).
  * #203d2b / #f5f1e7 10.56:1
  * #284e64 / #f5f1e7 7.88:1
- * #9c4708 / #f5f1e7 5.62:1
+ * #9c4708 / #f5f1e7 5.61:1
  * #203d2b / #f4e6b7 9.55:1
  * #ffc79e / #284e64 5.89:1
  * #102012 / #e86e09 5.39:1
@@ -265,3 +265,59 @@
   .record-item { padding-block: 28px; }
   .record-copy h3 { font-size: clamp(26px, 7vw, 35px); }
 }
+
+
+/* Graceful fallback when third-party photo hosting blocks hotlinking. */
+.photo-unavailable {
+  width: 100%;
+  min-height: 330px;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 80px;
+  padding: clamp(26px, 5vw, 56px);
+  color: var(--gris-ink);
+  background: var(--gris-sand);
+  border: 1px solid rgba(32,61,43,.25);
+}
+.photo-unavailable > span {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: .085em;
+}
+.photo-unavailable > p {
+  max-width: 530px;
+  margin: 0;
+  font-size: clamp(24px, 3.1vw, 44px);
+  line-height: 1.15;
+  letter-spacing: -.045em;
+}
+.territory-photo .photo-unavailable {
+  min-height: 300px;
+  height: calc(100% - 38px);
+  background: var(--gris-clay);
+}
+.documentary-panel > :not(.contour-mark) {
+  position: relative;
+  z-index: 2;
+}
+.hero-topline,
+.section-label,
+.footer-label,
+.about-signature,
+.documentary-location {
+  font-size: 12px;
+}
+.records-list a {
+  min-height: 44px;
+}
+@media (min-width: 900px) {
+  .documentary-photo .photo-unavailable { min-height: 540px; }
+}
+/* Keep actual photos unobstructed and allow captions to breathe. */
+.documentary-photo img { flex: 1 1 auto; }
+.territory-photo figcaption { padding-top: 12px; }
+[hidden] { display: none !important; }
