@@ -8,14 +8,12 @@
   --gris-paper: #f5f1e7;
   --gris-white: #fffaf2;
   --gris-forest: #203d2b;
-  --gris-mineral: #284e64;
   --gris-orange: #e86e09;
   --gris-orange-text: #9c4708;
   --gris-sand: #ece9da;
   --gris-warm: #f4dcc7;
   --gris-line: rgba(32, 61, 43, .29);
   --gris-near-black: #171b18;
-  --gris-orange-deep: #9c4708;
 }
 
 /* Remove all inherited decorative art and asymmetric radii. */
@@ -119,12 +117,12 @@
 
 /* Photographs are documents, with a stable caption outside the image. */
 .documentary {
-  background: var(--gris-mineral);
+  background: var(--gris-near-black);
   color: var(--gris-paper);
   --focus-ring: #ffc79e;
 }
 .documentary-panel {
-  background: var(--gris-mineral);
+  background: var(--gris-near-black);
   color: var(--gris-paper);
   isolation: auto;
 }
@@ -147,7 +145,7 @@
 .documentary-photo figcaption {
   position: static;
   flex: 0 0 auto;
-  background: var(--gris-mineral);
+  background: var(--gris-near-black);
   color: var(--gris-paper);
   text-shadow: none;
   padding: 12px clamp(18px, 2vw, 30px);
@@ -176,7 +174,7 @@
 .activity-row:hover .activity-title { color: var(--gris-orange-text); }
 .activity-title small { color: #425746; }
 .network {
-  background: var(--gris-mineral);
+  background: var(--gris-forest);
   color: var(--gris-paper);
   --focus-ring: #ffc79e;
 }
@@ -247,60 +245,53 @@
 }
 .record-item:hover .record-copy h3 { color: var(--gris-orange-text); }
 
-/* Donation: brand-orange field, with legible white typography.
- * Pure white on #e86e09 is 3.15:1, so it is limited to large headlines.
- * Smaller white text lives on #9c4708 (6.33:1) for WCAG AA.
+/* Fortaleça essa rede: a calm invitation, not another brand-color banner.
+ * The light warm surface lets the organization and call to action breathe.
  */
 .donate {
-  background: var(--gris-orange) !important;
-  color: #fff !important;
-  border: 0;
+  background: var(--gris-warm) !important;
+  color: var(--gris-forest) !important;
+  border-block: 1px solid var(--gris-line);
 }
+.donate-grid { align-items: center; }
 .donate .section-label {
   display: inline-block;
-  padding: 8px 11px;
-  background: var(--gris-orange-deep);
-  color: #fff !important;
+  padding: 0;
+  background: transparent;
+  color: var(--gris-forest) !important;
   letter-spacing: .09em;
 }
 .donate h2 {
-  color: #fff !important;
+  color: var(--gris-forest) !important;
   font-size: clamp(49px, 5.3vw, 82px);
-  line-height: 1.05;
+  line-height: 1.07;
 }
-.donate h2 span { color: #fff !important; }
-.donate-grid { align-items: center; }
+.donate h2 span { color: var(--gris-forest) !important; }
 .donate-copy {
-  background: var(--gris-orange-deep);
-  color: #fff;
-  padding: clamp(28px, 4.3vw, 64px);
+  background: transparent;
+  color: var(--gris-forest);
+  padding: 0;
   max-width: 630px;
   width: 100%;
 }
 .donate-copy p {
-  color: #fff !important;
+  color: var(--gris-forest) !important;
   font-size: clamp(17px, 1.6vw, 22px);
-  line-height: 1.52;
+  line-height: 1.55;
 }
 .donate .arrow-link {
-  color: #fff !important;
-  border-color: #fff;
+  color: var(--gris-forest) !important;
+  border-color: var(--gris-forest);
 }
 .donate-copy .button-green,
 .donate-copy .button-green:hover {
-  background: transparent !important;
-  color: #fff !important;
-  border: 1px solid #fff !important;
-  box-shadow: none;
-}
-@media (hover: hover) {
-  .donate-copy .button-green:hover {
-    box-shadow: 0 5px 0 rgba(0, 0, 0, .18);
-  }
+  background: var(--gris-forest) !important;
+  color: var(--gris-paper) !important;
+  border: 1px solid var(--gris-forest) !important;
 }
 .donate .button:focus-visible,
 .donate .arrow-link:focus-visible {
-  outline-color: #fff;
+  outline-color: var(--gris-forest);
   outline-offset: 4px;
 }
 
@@ -311,7 +302,7 @@
 
 /* Footer: own editorial chapter, not a stack of miscellaneous links. */
 .footer {
-  background: var(--gris-near-black);
+  background: var(--gris-forest);
   color: #fff;
   padding-top: clamp(70px,8.5vw,130px);
   --focus-ring: #ffc79e;
@@ -319,7 +310,7 @@
 .footer .brand { flex: 0 0 auto; }
 .footer .brand img {
   /* Original raster-in-SVG cannot change fill directly. This displays
-     it as a single light brand signature on the dark footer only. */
+     it as a single light brand signature on the green footer only. */
   filter: brightness(0) invert(1);
   opacity: .97;
 }
