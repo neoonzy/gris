@@ -91,11 +91,16 @@ test("footer has clear navigation, contact and social sections", async ({ page }
   await expect(page.locator(".footer-bottomline")).toContainText("Vila Arraes");
 });
 
-test("donation and primary actions never put text on orange surfaces", async ({ page }) => {
+test("donation uses exact brand orange with accessible white typography", async ({ page }) => {
   await page.goto("/");
-  const checks = [".donate", ".button-orange", ".nav-donate"];
-  for (const selector of checks) {
-    const color = await page.locator(selector).first().evaluate((element) => getComputedStyle(element).backgroundColor);
-    expect(color, selector + " must not have orange background").not.toBe("rgb(232, 110, 9)");
-  }
+  const bg = await page.locator(".donate").evaluate(element => getComputedStyle(element).backgroundColor);
+  expect(bg).toBe("rgb(232, 110, 9)");
+  const heading = await page.locator(".donate h2").evaluate(element => getComputedStyle(element).color);
+  expect(heading).toBe("rgb(255, 255, 255)");
+  const copyBackground = await page.locator(".donate-copy").evaluate(element => getComputedStyle(element).backgroundColor);
+  expect(copyBackground).toBe("rgb(156, 71, 8)");
+  const copyColor = await page.locator(".donate-copy p").first().evaluate(element => getComputedStyle(element).color);
+  expect(copyColor).toBe("rgb(255, 255, 255)");
+  const footerBackground = await page.locator(".footer").evaluate(element => getComputedStyle(element).backgroundColor);
+  expect(footerBackground).toBe("rgb(23, 27, 24)");
 });
