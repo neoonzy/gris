@@ -1,22 +1,26 @@
 /*
  * GRIS — refinamento editorial / novembro de 2026
- * Laranja continua exclusivamente na marca e em acentos sem texto sobreposto.
+ * Laranja em chamadas de ação e acentos; branco para texto sobre laranja.
  * Sem grafismos, cards artificiais, pseudoformas e cantos assimétricos.
  * A hierarquia é construída com tipografia, fotografia, espaço e linhas.
  */
 :root {
-  --gris-paper: #f5f1e7;
-  --gris-white: #fffaf2;
-  --gris-forest: #203d2b;
-  --gris-orange: #e86e09;
-  --gris-orange-text: #9c4708;
-  --gris-sand: #ece9da;
-  --gris-warm: #f4dcc7;
-  --gris-gray: #ececea;
-  --gris-gray-light: #f1f1ee;
-  --gris-gray-input: #f3f3f0;
-  --gris-line: rgba(32, 61, 43, .29);
-  --gris-near-black: #171b18;
+  --gris-paper: #FAF9F5;
+  --gris-white: #FFFFFF;
+  --gris-forest: #285740;
+  --gris-orange: #C34E1B;
+  --gris-orange-text: #C34E1B;
+  --gris-sand: #EFF0ED;
+  --gris-warm: #EFF0ED;
+  --gris-gray: #EFF0ED;
+  --gris-gray-light: #EFF0ED;
+  --gris-gray-input: #EFF0ED;
+  --gris-line: #D9DED8;
+  --gris-near-black: #202722;
+  --gris-green-soft: #557A63;
+  --gris-text-muted: #647068;
+  --gris-border: #D9DED8;
+  --gris-accent-on-dark: #FFD4BC;
 }
 
 /* Remove all inherited decorative art and asymmetric radii. */
@@ -31,11 +35,11 @@
 }
 .hero, .network, .territory, .donate { background-image: none !important; }
 
-/* Logo orange, text sufficiently contrasted on neutral substrates. */
-::selection { background: #dce9ed; color: #203d2b; }
+/* Paleta unificada e contraste preservado em superfícies claras e escuras. */
+::selection { background: #EFF0ED; color: #285740; }
 
-.site-header { background: var(--gris-paper); }
-.hero { background: var(--gris-paper); }
+.site-header { background: var(--gris-paper); color: var(--gris-near-black); }
+.hero { background: var(--gris-paper); color: var(--gris-near-black); }
 .hero h1 span, .territory h2 span, .activities h2 span,
 .impact h2 span, .records h2 span, .volunteer h2 span,
 .territory-big span { color: var(--gris-orange-text); }
@@ -51,9 +55,9 @@
   font-weight: 650;
 }
 .button-orange, .desktop-nav .nav-donate {
-  background: var(--gris-forest) !important;
-  border-color: var(--gris-forest) !important;
-  color: var(--gris-paper) !important;
+  background: var(--gris-orange) !important;
+  border-color: var(--gris-orange) !important;
+  color: #FFFFFF !important;
 }
 /*
  * Hover: preserve the button's original color, use depth and arrow movement.
@@ -71,9 +75,9 @@
 }
 .button-orange:hover,
 .desktop-nav .nav-donate:hover {
-  background: var(--gris-forest) !important;
-  border-color: var(--gris-forest) !important;
-  color: var(--gris-paper) !important;
+  background: var(--gris-orange) !important;
+  border-color: var(--gris-orange) !important;
+  color: #FFFFFF !important;
 }
 .button-green:hover,
 .donate-copy .button-green:hover {
@@ -95,7 +99,7 @@
   .button:hover,
   .desktop-nav .nav-donate:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 0 rgba(32, 61, 43, .14);
+    box-shadow: 0 5px 0 rgba(40,87,64,.14);
   }
   .button:hover svg,
   .desktop-nav .nav-donate:hover svg {
@@ -116,27 +120,27 @@
     transform: none !important;
   }
 }
-.mobile-nav .mobile-donate { color: #ffad70; }
+.mobile-nav .mobile-donate { color: var(--gris-accent-on-dark); }
 
 /* Photographs are documents, with a stable caption outside the image. */
 .documentary {
   background: var(--gris-near-black);
   color: var(--gris-paper);
-  --focus-ring: #ffc79e;
+  --focus-ring: #FFD4BC;
 }
 .documentary-panel {
   background: var(--gris-near-black);
   color: var(--gris-paper);
   isolation: auto;
 }
-.documentary-panel p span { color: #ffc79e; }
+.documentary-panel p span { color: var(--gris-accent-on-dark); }
 .documentary-panel > :not(.contour-mark) { position: static; }
 .documentary-photo {
   position: relative;
   display: flex;
   flex-direction: column;
   min-width: 0;
-  background: #d8dfd0;
+  background: #EFF0ED;
 }
 .documentary-photo img {
   width: 100%;
@@ -159,12 +163,12 @@
   background: var(--gris-forest);
   color: var(--gris-paper);
 }
-.about h2 span, .about .light-link { color: #ffad70; }
+.about h2 span, .about .light-link { color: var(--gris-accent-on-dark); }
 
 /* Restrained alternation: paper / sand / deep mineral. */
-.territory, .impact { background: var(--gris-paper); }
+.territory, .impact { background: var(--gris-paper); color: var(--gris-near-black); }
 .territory-info { background: var(--gris-sand); }
-.territory-photo { background: #d8dfd0; }
+.territory-photo { background: #EFF0ED; }
 .territory-photo figcaption {
   color: var(--gris-forest);
   font-size: 12px;
@@ -172,18 +176,19 @@
 }
 .activities {
   background: var(--gris-gray-light);
-  color: var(--gris-forest);
+  color: var(--gris-near-black);
 }
 .activity-row:hover .activity-title { color: var(--gris-orange-text); }
-.activity-title small { color: #425746; }
+.activity-title small { color: #647068; }
 .network {
   background: var(--gris-forest);
   color: var(--gris-paper);
-  --focus-ring: #ffc79e;
+  --focus-ring: #FFD4BC;
 }
-.network h2 span, .network .arrow-link { color: #ffc79e; }
+.network h2 span, .network .arrow-link { color: var(--gris-accent-on-dark); }
 .network-copy p { color: var(--gris-paper); }
 .records { background: var(--gris-white); }
+.records .record-copy p { color: var(--gris-text-muted); }
 
 /* News/records work better as an editorial list than large image cards. */
 .records-list {
@@ -248,59 +253,62 @@
 }
 .record-item:hover .record-copy h3 { color: var(--gris-orange-text); }
 
-/* Fortaleça essa rede: neutral and legible, without a saturated banner.
- * Use a subtle solid gray rather than a desaturated transparent overlay.
+/* Fortaleça essa rede: laranja institucional com contraste AA.
+ * A seção funciona como a principal chamada, sem elementos decorativos extras.
  */
 .donate {
-  background: var(--gris-gray) !important;
-  color: var(--gris-forest) !important;
-  border-block: 1px solid var(--gris-line);
+  background: var(--gris-orange) !important;
+  color: #FFFFFF !important;
+  border-block: 1px solid var(--gris-orange);
+  --focus-ring: #FFFFFF;
 }
 .donate-grid { align-items: center; }
 .donate .section-label {
   display: inline-block;
   padding: 0;
   background: transparent;
-  color: var(--gris-forest) !important;
+  color: #FFFFFF !important;
   letter-spacing: .09em;
 }
 .donate h2 {
-  color: var(--gris-forest) !important;
+  color: #FFFFFF !important;
   font-size: clamp(49px, 5.3vw, 82px);
   line-height: 1.07;
 }
-.donate h2 span { color: var(--gris-forest) !important; }
+.donate h2 span { color: #FFFFFF !important; }
 .donate-copy {
   background: transparent;
-  color: var(--gris-forest);
+  color: #FFFFFF;
   padding: 0;
   max-width: 630px;
   width: 100%;
 }
 .donate-copy p {
-  color: var(--gris-forest) !important;
+  color: #FFFFFF !important;
   font-size: clamp(17px, 1.6vw, 22px);
   line-height: 1.55;
 }
 .donate .arrow-link {
-  color: var(--gris-forest) !important;
-  border-color: var(--gris-forest);
+  color: #FFFFFF !important;
+  border-color: #FFFFFF;
 }
 .donate-copy .button-green,
 .donate-copy .button-green:hover {
   background: var(--gris-forest) !important;
-  color: var(--gris-paper) !important;
+  color: #FFFFFF !important;
   border: 1px solid var(--gris-forest) !important;
 }
 .donate .button:focus-visible,
 .donate .arrow-link:focus-visible {
-  outline-color: var(--gris-forest);
+  outline-color: #FFFFFF;
   outline-offset: 4px;
 }
 
 .volunteer { background: var(--gris-white); }
+.volunteer-form input, .volunteer-form textarea { color: var(--gris-near-black); border-color: var(--gris-border); }
+.volunteer-form input::placeholder, .volunteer-form textarea::placeholder { color: var(--gris-text-muted); }
 .volunteer-form input, .volunteer-form textarea { background: var(--gris-gray-input); }
-.volunteer-form input:focus-visible, .volunteer-form textarea:focus-visible { background: #fffdf6; }
+.volunteer-form input:focus-visible, .volunteer-form textarea:focus-visible { background: #FFFFFF; }
 .form-feedback { background: var(--gris-gray-light); }
 
 /* Footer: own editorial chapter, not a stack of miscellaneous links. */
@@ -308,7 +316,7 @@
   background: var(--gris-forest);
   color: #fff;
   padding-top: clamp(70px,8.5vw,130px);
-  --focus-ring: #ffc79e;
+  --focus-ring: #FFD4BC;
 }
 .footer .brand { flex: 0 0 auto; }
 .footer .brand img {
@@ -328,7 +336,7 @@
   font-size: 13px;
   line-height: 1.5;
   font-weight: 550;
-  color: #e0e6d8;
+  color: #FAF9F5;
 }
 .footer-eyebrow {
   display: block;
@@ -337,7 +345,7 @@
   letter-spacing: .12em;
   font-size: 12px;
   font-weight: 700;
-  color: #e4e9df;
+  color: #FAF9F5;
 }
 .footer-intro-message p {
   font-size: clamp(38px,5.2vw,78px);
@@ -347,7 +355,7 @@
   max-width: 850px;
   margin: 0 0 35px;
 }
-.footer-intro-message p span { color: #ffad70; }
+.footer-intro-message p span { color: var(--gris-accent-on-dark); }
 .footer-join {
   display: inline-flex;
   align-items: center;
@@ -355,16 +363,16 @@
   min-height: 44px;
   padding-bottom: 8px;
   border-bottom: 1px solid currentColor;
-  color: #ffbf91;
+  color: #FFD4BC;
   font-size: 16px;
   font-weight: 650;
 }
-.footer-join:hover { color: #fff; }
+.footer-join:hover { color: #FFFFFF; }
 .footer-columns {
   display: grid;
   grid-template-columns: minmax(0,1fr);
   gap: 35px;
-  border-top: 1px solid rgba(245,241,231,.44);
+  border-top: 1px solid rgba(250,249,245,.44);
   padding: clamp(38px,4.2vw,62px) 0 clamp(55px,7vw,95px);
 }
 .footer-column { display: flex; flex-direction: column; align-items: flex-start; gap: 13px; min-width: 0; }
@@ -375,7 +383,7 @@
   text-transform: uppercase;
   letter-spacing: .11em;
   line-height: 1.4;
-  color: #e4e9df;
+  color: #FAF9F5;
 }
 .footer-column > a, .footer-column address {
   font-size: 16px;
@@ -395,10 +403,10 @@
   max-width: 290px;
   font-size: 13px;
   line-height: 1.55;
-  color: #d7e0d5;
+  color: #FAF9F5;
   margin: 0;
 }
-.footer-column .footer-action { color: #ffbf91; }
+.footer-column .footer-action { color: #FFD4BC; }
 .footer-column .footer-social { align-items: center; }
 .footer-column .footer-email { max-width: 100%; }
 .footer-bottomline {
@@ -407,14 +415,14 @@
   align-items: center;
   gap: 12px 28px;
   flex-wrap: wrap;
-  border-top: 1px solid rgba(245,241,231,.40);
+  border-top: 1px solid rgba(250,249,245,.40);
   padding-block: 24px;
-  color: #dde5d8;
+  color: #FAF9F5;
   font-size: 12px;
   line-height: 1.5;
 }
 .footer-bottomline a { color: #fff; text-decoration: underline; text-underline-offset: 5px; }
-.footer a:focus-visible { outline-color: #ffc79e; }
+.footer a:focus-visible { outline-color: #FFD4BC; }
 
 /* Fallbacks for externally hosted documentary photos. */
 .photo-unavailable {
