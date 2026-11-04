@@ -161,8 +161,8 @@ p { line-height: 1.55; }
 .records-top h2 { max-width: 850px; margin-top: 25px; }
 .records-top > p { align-self: end; font-size: 18px; max-width: 340px; }
 .records-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
-.record-card { display: flex; flex-direction: column; justify-content: space-between; gap: 65px; min-height: 390px; border: 1px solid var(--green); padding: clamp(24px, 4vw, 40px); transition: background 160ms ease, color 160ms ease; }
-.record-card:hover { background: var(--green); color: var(--cream); }
+
+
 .record-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 15px; font-size: 11px; font-weight: 700; letter-spacing: .075em; }
 .record-number { color: var(--orange); font-size: 12px; font-weight: 800; }
 .record-card h3 { font-size: clamp(28px, 3.7vw, 48px); line-height: 1.1; max-width: 540px; margin: 13px 0 16px; }
@@ -197,13 +197,13 @@ p { line-height: 1.55; }
 /* Closing */
 .footer { color: var(--cream); background: var(--green); padding-top: clamp(72px, 9vw, 130px); }
 .footer .brand { filter: none; }
-.footer-top { display: flex; justify-content: space-between; flex-direction: column; gap: 25px; padding-bottom: 80px; }
+
 .footer-top p { max-width: 600px; font-size: clamp(25px, 4.3vw, 50px); line-height: 1.12; letter-spacing: -.045em; }
-.footer-grid { display: grid; gap: 32px; border-top: 1px solid rgba(245,241,231,.32); padding-block: 32px 80px; }
-.footer-label { display: block; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; margin-bottom: 17px; color: #c7d3bd; }
-.footer-link { display: inline-flex; align-items: flex-start; gap: 10px; max-width: 100%; font-size: 15px; overflow-wrap: anywhere; line-height: 1.45; }
-.footer-link:hover { text-decoration: underline; }
-.footer-end { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 15px; border-top: 1px solid rgba(245,241,231,.32); padding: 23px 0; font-size: 12px; }
+
+
+
+
+
 
 @media (min-width: 600px) {
   .container { width: min(100% - 64px, 1320px); }
@@ -232,14 +232,14 @@ p { line-height: 1.55; }
   .activity-row summary { grid-template-columns: 70px minmax(0, 1fr) 44px; gap: 12px; }
   .activity-detail { padding-left: 82px; }
   .territory-info { min-height: 530px; }
-  .footer-top { align-items: flex-end; flex-direction: row; }
-  .footer-grid { grid-template-columns: 1fr 1fr .7fr; gap: 48px; }
+  
+  
 }
 @media (max-width: 599px) {
   .hero-topline > span:last-child { display: none; }
   .hero h1 { font-size: clamp(51px, 12.8vw, 76px); overflow-wrap: break-word; }
   .hero-actions .button { flex-basis: 100%; }
-  .record-card { min-height: 360px; }
+  
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto!important; transition: none!important; animation: none!important; }
@@ -281,34 +281,18 @@ body { overflow-x: clip; }
 .donate { --focus-ring: var(--green); }
 .menu-toggle { min-width: 46px; min-height: 46px; }
 .brand { min-height: 68px; }
-.arrow-link, .footer-link { min-height: 29px; }
-.footer-link { padding-block: 6px; }
+.arrow-link, 
+
 .activity-row summary { min-height: 80px; }
 .activity-row summary:focus-visible {
   outline: 3px solid var(--focus-ring);
   outline-offset: -3px;
 }
-.record-card:focus-visible { outline-offset: -5px; }
+
 
 .hero { position: relative; overflow: hidden; isolation: isolate; }
-.hero::before {
-  content: ""; position: absolute;
-  pointer-events: none; z-index: -1;
-  width: clamp(280px, 38vw, 670px); aspect-ratio: 1;
-  border: 1px solid rgba(32,61,43,.14);
-  border-radius: 48% 52% 47% 53% / 53% 46% 54% 47%;
-  right: -19%; top: 9%;
-  transform: rotate(-24deg);
-}
-.hero::after {
-  content: ""; position: absolute;
-  width: clamp(180px, 23vw, 340px); aspect-ratio: 1.3;
-  border: 1px solid rgba(32,61,43,.10);
-  border-radius: 60% 40% 57% 43% / 42% 53% 47% 58%;
-  right: -11%; top: 29%;
-  transform: rotate(21deg);
-  pointer-events: none; z-index: -1;
-}
+
+
 .hero h1 { max-width: 1170px; line-height: 1.01; letter-spacing: -.073em; }
 .hero h1 span { color: var(--orange-text); }
 .hero-bottom { position: relative; z-index: 1; }
@@ -333,18 +317,8 @@ h2 span { color: var(--orange-text); }
   overflow: hidden;
   background: #254833;
 }
-.documentary-decor {
-  position: absolute; width: 450px; aspect-ratio: 1;
-  border: 1px solid rgba(245,241,231,.27);
-  border-radius: 44% 56% 60% 40% / 48% 45% 55% 52%;
-  top: -180px; right: -220px;
-  transform: rotate(-20deg); z-index: -1; pointer-events: none;
-}
-.documentary-decor::after {
-  content: ""; position: absolute; inset: 35px;
-  border: 1px solid rgba(245,241,231,.2);
-  border-radius: 52% 48% 49% 51% / 57% 44% 56% 43%;
-}
+
+
 .documentary-photo figcaption {
   background: linear-gradient(transparent, rgba(12,29,17,.95));
   padding-top: 65px; font-size: 12px; font-weight: 550;
@@ -364,13 +338,7 @@ h2 span { color: var(--orange-text); }
   border-radius: 0 clamp(46px, 9vw, 150px) 0 0;
 }
 .territory-info > * { position: relative; }
-.territory-orbit {
-  position: absolute; right: -135px; top: -150px;
-  width: clamp(300px,32vw,560px); aspect-ratio: 1;
-  border: 1px solid rgba(32,61,43,.16);
-  border-radius: 46% 54% 52% 48% / 40% 56% 44% 60%;
-  transform: rotate(-24deg); pointer-events: none;
-}
+
 .territory-photo { align-self: stretch; overflow: hidden; border-radius: 0 0 0 clamp(40px,8vw,110px); }
 .territory-photo img { object-position: center; }
 .activities {
@@ -387,12 +355,9 @@ h2 span { color: var(--orange-text); }
 .impact-numbers strong { overflow-wrap: anywhere; }
 .network { border-radius: clamp(28px,6vw,100px) 0 clamp(28px,6vw,100px) 0; }
 .network-brand { letter-spacing: -.04em; }
-.record-card {
-  border-radius: 0 clamp(20px,4vw,54px) 0 0;
-  background: var(--soft-cream);
-}
+
 .record-card:nth-child(2) { border-radius: clamp(20px,4vw,54px) 0 0 0; }
-.record-card:hover { background: var(--green); }
+
 .donate { border-radius: clamp(26px,5vw,74px) clamp(26px,5vw,74px) 0 0; }
 .volunteer-form input:focus-visible,
 .volunteer-form textarea:focus-visible { background: #fffaf0; }
@@ -408,20 +373,18 @@ h2 span { color: var(--orange-text); }
   .records-grid { gap: clamp(20px,2vw,36px); }
 }
 @media (max-width: 599px) {
-  .hero::before { right: -42%; top: 15%; }
-  .hero::after { right: -32%; top: 37%; }
+  
+  
   .hero h1 { font-size: clamp(48px, 11.7vw, 71px); letter-spacing: -.064em; }
   .documentary-panel { min-height: 300px; }
   .documentary-panel p { font-size: clamp(35px,10vw,47px); }
   .impact-numbers strong { font-size: clamp(63px,17vw,96px); }
   .territory-big { font-size: clamp(48px,13vw,82px); }
   .territory-info { min-height: 350px; }
-  .footer-end { line-height: 1.6; }
+  
 }
 @media (prefers-reduced-motion: reduce) {
-  .activity-row summary, .arrow-link, .button, .record-card {
-    transition: none !important;
-  }
+  .activity-row summary, .arrow-link, .button, 
 }
 
 /* Ensure regular-size CTA and donation text meets AA contrast as well. */
@@ -660,7 +623,7 @@ h2 span { color: var(--orange-text); }
   .records-top h2 { max-width: 760px; font-size: clamp(60px, 5vw, 80px); }
   .records-top > p { max-width: 355px; font-size: 18px; }
   .records-grid { gap: clamp(20px, 3vw, 46px); }
-  .record-card { min-height: 400px; padding: clamp(30px, 3vw, 46px); }
+  
   .record-card h3 { font-size: clamp(32px, 3.1vw, 46px); }
 
   /* Action forms: make the right-hand column feel intentional. */
@@ -673,9 +636,9 @@ h2 span { color: var(--orange-text); }
   .donate-copy p { font-size: clamp(19px, 1.8vw, 23px); }
   .volunteer-grid > div > p { max-width: 470px; font-size: 19px; }
   .volunteer-form { gap: 22px; }
-  .footer-top { padding-bottom: 85px; }
+  
   .footer-top p { max-width: 630px; font-size: clamp(32px, 3.2vw, 48px); }
-  .footer-grid { grid-template-columns: 1fr 1fr .65fr; gap: clamp(35px, 5vw, 90px); }
+  
 }
 
 /* On ultrawide displays, center the editorial canvas instead of
@@ -683,7 +646,7 @@ h2 span { color: var(--orange-text); }
 @media (min-width: 1600px) {
   .container { width: min(calc(100% - 200px), 1320px); }
   .hero h1 { font-size: 116px; max-width: 1240px; }
-  .hero::before { right: max(-200px, calc((100vw - 1560px) / 2)); }
-  .hero::after { right: max(-110px, calc((100vw - 1560px) / 2 + 140px)); }
+  
+  
 }
 
