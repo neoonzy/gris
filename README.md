@@ -2,6 +2,8 @@
 
 Site institucional do **GRIS Espaço Solidário — Casa Maria de Lourdes**, com atuação retratada na Vila Arraes, Várzea, Recife (PE). O projeto apresenta história, território, frentes de atuação, reportagens e formas de apoiar ou participar da organização.
 
+**Vai assumir a manutenção do site?** Comece pelo [Guia de transição e primeiros passos](docs/HANDOFF.md), escrito para facilitar alterações simples, revisões e a passagem de responsabilidade.
+
 **Este repositório contém a aplicação web, não uma plataforma de gestão.** Não há banco de dados, CMS, autenticação ou API de envio de formulários nesta versão. Informações de contato, métricas e imagens precisam ser validadas com a equipe responsável antes de divulgação pública definitiva.
 
 ## Estado do projeto
@@ -70,6 +72,7 @@ A descrição de cada arquivo, dos componentes e das dependências está em [Arq
 
 | Documento | Para que serve |
 | --- | --- |
+| [Guia de transição](docs/HANDOFF.md) | Começar a editar, identificar arquivos, passar acessos e assumir manutenção |
 | [Arquitetura](docs/ARCHITECTURE.md) | Entender módulos, estado, navegação e limites técnicos |
 | [Design system](docs/DESIGN_SYSTEM.md) | Cores **atuais**, tipografia, CSS e responsividade |
 | [Conteúdo e edição](docs/CONTENT.md) | Atualizar textos, links, atividades, números e fotografias |
